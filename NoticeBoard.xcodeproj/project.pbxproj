@@ -11,6 +11,11 @@
 		845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* ViewController.swift */; };
 		845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8229F37CAB007A4B80 /* Assets.xcassets */; };
 		845E8F8629F37CAB007A4B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8429F37CAB007A4B80 /* Main.storyboard */; };
+		84C17D3129F385E0009CFF4F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 84C17D3029F385E0009CFF4F /* SwiftSoup */; };
+		84C17D3429F386BA009CFF4F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84C17D3329F386BA009CFF4F /* Alamofire */; };
+		84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3A29F3D451009CFF4F /* BoardParser.swift */; };
+		84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3D29F3D52F009CFF4F /* Notice.swift */; };
+		84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D4229F40676009CFF4F /* NoticeTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,9 @@
 		845E8F8229F37CAB007A4B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		845E8F8529F37CAB007A4B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		845E8F8729F37CAB007A4B80 /* NoticeBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoticeBoard.entitlements; sourceTree = "<group>"; };
+		84C17D3A29F3D451009CFF4F /* BoardParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardParser.swift; sourceTree = "<group>"; };
+		84C17D3D29F3D52F009CFF4F /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		84C17D4229F40676009CFF4F /* NoticeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C17D3129F385E0009CFF4F /* SwiftSoup in Frameworks */,
+				84C17D3429F386BA009CFF4F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,13 +62,72 @@
 		845E8F7D29F37CA9007A4B80 /* NoticeBoard */ = {
 			isa = PBXGroup;
 			children = (
-				845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */,
-				845E8F8029F37CA9007A4B80 /* ViewController.swift */,
-				845E8F8229F37CAB007A4B80 /* Assets.xcassets */,
-				845E8F8429F37CAB007A4B80 /* Main.storyboard */,
-				845E8F8729F37CAB007A4B80 /* NoticeBoard.entitlements */,
+				84C17D4129F403D4009CFF4F /* Custom Controls */,
+				84C17D3629F3D38D009CFF4F /* Supporting Files */,
+				84C17D3C29F3D472009CFF4F /* Model */,
+				84C17D3929F3D42F009CFF4F /* Networking */,
+				84C17D3529F3D381009CFF4F /* Scenes */,
+				84C17D3829F3D3D1009CFF4F /* Resources */,
 			);
 			path = NoticeBoard;
+			sourceTree = "<group>";
+		};
+		84C17D3529F3D381009CFF4F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				84C17D3729F3D3AF009CFF4F /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		84C17D3629F3D38D009CFF4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				845E8F8729F37CAB007A4B80 /* NoticeBoard.entitlements */,
+				845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84C17D3729F3D3AF009CFF4F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				845E8F8029F37CA9007A4B80 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		84C17D3829F3D3D1009CFF4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				845E8F8229F37CAB007A4B80 /* Assets.xcassets */,
+				845E8F8429F37CAB007A4B80 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84C17D3929F3D42F009CFF4F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				84C17D3A29F3D451009CFF4F /* BoardParser.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		84C17D3C29F3D472009CFF4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84C17D3D29F3D52F009CFF4F /* Notice.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84C17D4129F403D4009CFF4F /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				84C17D4229F40676009CFF4F /* NoticeTableCell.swift */,
+			);
+			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +146,10 @@
 			dependencies = (
 			);
 			name = NoticeBoard;
+			packageProductDependencies = (
+				84C17D3029F385E0009CFF4F /* SwiftSoup */,
+				84C17D3329F386BA009CFF4F /* Alamofire */,
+			);
 			productName = NoticeBoard;
 			productReference = 845E8F7B29F37CA9007A4B80 /* NoticeBoard.app */;
 			productType = "com.apple.product-type.application";
@@ -105,6 +178,10 @@
 				Base,
 			);
 			mainGroup = 845E8F7229F37CA9007A4B80;
+			packageReferences = (
+				84C17D2F29F385E0009CFF4F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				84C17D3229F386BA009CFF4F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 845E8F7C29F37CA9007A4B80 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -131,6 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */,
+				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
+				84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */,
 				845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */,
 				845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */,
 			);
@@ -268,13 +348,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NoticeBoard/NoticeBoard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "NoticeBoard/Supporting Files/NoticeBoard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -295,13 +376,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NoticeBoard/NoticeBoard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "NoticeBoard/Supporting Files/NoticeBoard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -339,6 +421,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84C17D2F29F385E0009CFF4F /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		84C17D3229F386BA009CFF4F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84C17D3029F385E0009CFF4F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84C17D2F29F385E0009CFF4F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		84C17D3329F386BA009CFF4F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84C17D3229F386BA009CFF4F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 845E8F7329F37CA9007A4B80 /* Project object */;
 }
