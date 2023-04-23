@@ -806,9 +806,9 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="haX-pJ-HQA" userLabel="Notice Text">
-                                                                    <rect key="frame" x="31" y="14" width="397" height="13"/>
+                                                                    <rect key="frame" x="31" y="12" width="397" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="게시글 이름" id="oe2-Dh-cHM">
-                                                                        <font key="font" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                                                        <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -863,6 +863,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
                         <outlet property="selectView" destination="YcQ-zW-MyH" id="7B1-s9-8Uy"/>
                         <outlet property="tableView" destination="QsR-RF-8pl" id="wga-bw-FYr"/>
                     </connections>

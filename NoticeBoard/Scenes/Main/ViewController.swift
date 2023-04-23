@@ -11,6 +11,7 @@ import SwiftSoup
 
 class ViewController: NSViewController {
     
+    @IBOutlet var scrollView: NSScrollView!
     @IBOutlet var selectView: NSView!
     @IBOutlet var tableView: NSTableView!
     
@@ -27,6 +28,9 @@ class ViewController: NSViewController {
             self.notices = notices
             self.tableView.reloadData()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(boundsChange),
+                                               name: NSView.boundsDidChangeNotification, object: nil)
     }
 
     override var representedObject: Any? {
@@ -34,8 +38,11 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-
+    
+    @objc func boundsChange() {
+//        print(scrollView.horizontalScroller?)
+        print(scrollView.verticalScroller)
+    }
 }
 
 
@@ -57,10 +64,10 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
     
 
     func tableViewSelectionDidChange(_ notification: Notification) {
-//        print(tableView.selectedRow)
+        tableView.deselectRow(tableView.selectedRow)
 //        if tableView.selectedRow != -1 {
 //            NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.selectedRow].noticeURL)!)
-//            tableView.deselectRow(tableView.selectedRow)
+//
 //        }
     }
 }
