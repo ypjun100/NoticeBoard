@@ -14,6 +14,9 @@ class ViewController: NSViewController {
     @IBOutlet var scrollView: NSScrollView!
     @IBOutlet var selectView: NSView!
     @IBOutlet var tableView: NSTableView!
+    @IBOutlet var progressIndicator: NSProgressIndicator!
+    
+    var pageIndex = 0
     
     var notices: [Notice] = []
     
@@ -24,15 +27,14 @@ class ViewController: NSViewController {
         selectView.layer?.cornerRadius = 5.0
         selectView.layer?.backgroundColor = CGColor(gray: 1.0, alpha: 0.05)
         
-        BoardParser.parse(url: "https://home.sch.ac.kr/sch/06/010100.jsp") { notices in
+        BoardParser.parse(url: "https://home.sch.ac.kr/sch/06/010100.jsp", pageIndex: pageIndex) { notices in
             self.notices = notices
             self.tableView.reloadData()
         }
         
-        tableView.action = #selector(onItemClicked)
+        tableView.action = #selector(onItemClicked) // 테이블 요소 선택
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(boundsChange),
-//                                               name: NSView.boundsDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onScrollEnded), name: NSScrollView.didEndLiveScrollNotification, object: nil)
     }
 
     override var representedObject: Any? {
@@ -41,13 +43,20 @@ class ViewController: NSViewController {
         }
     }
     
-    @objc func boundsChange() {
-        print(scrollView.horizontalScroller?.floatValue)
-        print(scrollView.verticalScroller?.floatValue)
-    }
-    
     @objc func onItemClicked() {
         NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.clickedRow].noticeURL)!)
+    }
+    
+    @objc func onScrollEnded() {
+        if(scrollView.contentView.bounds.origin.y + scrollView.contentView.bounds.height == scrollView.documentView?.bounds.height) {
+            progressIndicator.startAnimation(self)
+            pageIndex += 1
+            BoardParser.parse(url: "https://home.sch.ac.kr/sch/06/010100.jsp", pageIndex: pageIndex) { notices in
+                self.notices.append(contentsOf: notices)
+                self.tableView.reloadData()
+                self.progressIndicator.stopAnimation(self)
+            }
+        }
     }
 }
 

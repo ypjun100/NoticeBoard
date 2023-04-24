@@ -744,14 +744,14 @@
                                 <subviews>
                                     <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="Tks-LH-50h">
                                         <rect key="frame" x="5" y="12" width="411" height="16"/>
-                                        <popUpButtonCell key="cell" type="bevel" title="학교" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="3Rw-aH-one" id="kQ7-UD-rd4">
+                                        <popUpButtonCell key="cell" type="bevel" title="대학공지" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="3Rw-aH-one" id="kQ7-UD-rd4">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="YaS-SE-lQn">
                                                 <items>
-                                                    <menuItem title="학교" state="on" hidden="YES" id="3Rw-aH-one"/>
-                                                    <menuItem title="Item 2" id="vev-P9-eiX"/>
-                                                    <menuItem title="Item 3" id="JiR-3p-NuC"/>
+                                                    <menuItem title="대학공지" state="on" hidden="YES" id="3Rw-aH-one"/>
+                                                    <menuItem title="학과공지" id="vev-P9-eiX"/>
+                                                    <menuItem title="SW중심대학공지" id="JiR-3p-NuC"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -848,13 +848,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-uy-h9Y">
+                                <rect key="frame" x="217" y="286" width="32" height="32"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="YcQ-zW-MyH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="05n-WN-NOF"/>
                             <constraint firstAttribute="trailing" secondItem="YcQ-zW-MyH" secondAttribute="trailing" constant="20" id="2zO-Gk-bw0"/>
                             <constraint firstItem="cOi-Bs-9Ha" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="91V-QC-Srh"/>
                             <constraint firstItem="bWW-P7-zp2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="CGj-Zk-x0Z"/>
+                            <constraint firstItem="FoU-uy-h9Y" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Nws-gE-ahH"/>
                             <constraint firstItem="bWW-P7-zp2" firstAttribute="top" secondItem="YcQ-zW-MyH" secondAttribute="bottom" id="TVb-XD-THO"/>
+                            <constraint firstItem="FoU-uy-h9Y" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="UgD-Zv-0Bm"/>
                             <constraint firstAttribute="trailing" secondItem="bWW-P7-zp2" secondAttribute="trailing" constant="10" id="gLA-1l-ZHp"/>
                             <constraint firstAttribute="bottom" secondItem="bWW-P7-zp2" secondAttribute="bottom" id="hwb-eE-qUq"/>
                             <constraint firstItem="cOi-Bs-9Ha" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="jF0-zb-u5r"/>
@@ -863,6 +868,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="progressIndicator" destination="FoU-uy-h9Y" id="NDZ-0C-FJ8"/>
                         <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
                         <outlet property="selectView" destination="YcQ-zW-MyH" id="7B1-s9-8Uy"/>
                         <outlet property="tableView" destination="QsR-RF-8pl" id="wga-bw-FYr"/>
