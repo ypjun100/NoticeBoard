@@ -715,16 +715,16 @@
                                 <rect key="frame" x="20" y="564" width="426" height="24"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rEj-3c-1ej">
-                                        <rect key="frame" x="-2" y="0.0" width="22" height="24"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="홈" id="ew2-F2-8sw">
+                                        <rect key="frame" x="-2" y="0.0" width="108" height="24"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="순천향대학교" id="ew2-F2-8sw">
                                             <font key="font" size="20" name="AppleSDGothicNeo-Bold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-dM-nz3">
-                                        <rect key="frame" x="410" y="5" width="16.5" height="16"/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="gearshape.fill" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="uGV-0D-y44">
+                                        <rect key="frame" x="411" y="5" width="15" height="15"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="magnifyingglass" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="uGV-0D-y44">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -874,6 +874,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape.fill" catalog="system" width="16" height="16"/>
+        <image name="magnifyingglass" catalog="system" width="15" height="15"/>
     </resources>
 </document>

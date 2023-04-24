@@ -29,8 +29,10 @@ class ViewController: NSViewController {
             self.tableView.reloadData()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(boundsChange),
-                                               name: NSView.boundsDidChangeNotification, object: nil)
+        tableView.action = #selector(onItemClicked)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(boundsChange),
+//                                               name: NSView.boundsDidChangeNotification, object: nil)
     }
 
     override var representedObject: Any? {
@@ -40,8 +42,12 @@ class ViewController: NSViewController {
     }
     
     @objc func boundsChange() {
-//        print(scrollView.horizontalScroller?)
-        print(scrollView.verticalScroller)
+        print(scrollView.horizontalScroller?.floatValue)
+        print(scrollView.verticalScroller?.floatValue)
+    }
+    
+    @objc func onItemClicked() {
+        NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.clickedRow].noticeURL)!)
     }
 }
 
@@ -57,6 +63,7 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NoticeTableCell else { return nil }
         
         cell.noticeType.stringValue = notice.noticeType == 0 ? "일반" : "공지"
+        cell.noticeType.textColor = notice.noticeType == 0 ? NSColor.textColor : NSColor(red: 0.8, green: 0.15, blue: 0, alpha: 1.0)
         cell.noticeText.stringValue = notice.noticeName
         
         return cell
@@ -64,10 +71,6 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
     
 
     func tableViewSelectionDidChange(_ notification: Notification) {
-        tableView.deselectRow(tableView.selectedRow)
-//        if tableView.selectedRow != -1 {
-//            NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.selectedRow].noticeURL)!)
-//
-//        }
+        tableView.deselectRow(tableView.selectedRow) // 클릭 후 포커스가 유지되는 현상 방지
     }
 }
