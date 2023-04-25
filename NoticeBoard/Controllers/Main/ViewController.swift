@@ -11,42 +11,39 @@ import SwiftSoup
 
 class ViewController: NSViewController {
     
+    @IBOutlet var boardSelectView: NSView!
     @IBOutlet var scrollView: NSScrollView!
-    @IBOutlet var selectView: NSView!
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var progressIndicator: NSProgressIndicator!
     
-    var pageIndex = 0
-    
-    var notices: [Notice] = []
+    var pageIndex = 0 // 게시판 페이지 인덱스
+    var notices: [Notice] = [] // 게시글
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        selectView.wantsLayer = true
-        selectView.layer?.cornerRadius = 5.0
-        selectView.layer?.backgroundColor = CGColor(gray: 1.0, alpha: 0.05)
+        // Board Select View UI 수정
+        boardSelectView.wantsLayer = true
+        boardSelectView.layer?.cornerRadius = 5.0
+        boardSelectView.layer?.backgroundColor = CGColor(gray: 1.0, alpha: 0.05)
         
+        // 게시판 데이터 가져오기
         BoardParser.parse(url: "https://home.sch.ac.kr/sch/06/010100.jsp", pageIndex: pageIndex) { notices in
             self.notices = notices
             self.tableView.reloadData()
         }
         
-        tableView.action = #selector(onItemClicked) // 테이블 요소 선택
+        tableView.action = #selector(onItemClicked) // 테이블 요소 선택시 액션
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onScrollEnded), name: NSScrollView.didEndLiveScrollNotification, object: nil)
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(onScrollEnded), name: NSScrollView.didEndLiveScrollNotification, object: nil) // 아래로 스크롤 시 알림
     }
     
+    // 게시글 행 클릭시
     @objc func onItemClicked() {
         NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.clickedRow].noticeURL)!)
     }
     
+    // 사용자 스크롤 종료시
     @objc func onScrollEnded() {
         if(scrollView.contentView.bounds.origin.y + scrollView.contentView.bounds.height == scrollView.documentView?.bounds.height) {
             progressIndicator.startAnimation(self)
@@ -78,7 +75,6 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
         return cell
     }
     
-
     func tableViewSelectionDidChange(_ notification: Notification) {
         tableView.deselectRow(tableView.selectedRow) // 클릭 후 포커스가 유지되는 현상 방지
     }

@@ -28,7 +28,7 @@ class BoardParser {
                 }
                 callback(notices)
             } catch {
-                print("crawl error")
+                print(error)
             }
         }
     }

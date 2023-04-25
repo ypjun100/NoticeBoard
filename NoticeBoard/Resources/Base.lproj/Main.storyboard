@@ -739,7 +739,7 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-zW-MyH">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-zW-MyH" userLabel="Board Select View">
                                 <rect key="frame" x="20" y="514" width="426" height="40"/>
                                 <subviews>
                                     <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="Tks-LH-50h">
@@ -868,6 +868,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="boardSelectView" destination="YcQ-zW-MyH" id="Zbo-3b-Cj6"/>
                         <outlet property="progressIndicator" destination="FoU-uy-h9Y" id="NDZ-0C-FJ8"/>
                         <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
                         <outlet property="selectView" destination="YcQ-zW-MyH" id="7B1-s9-8Uy"/>
