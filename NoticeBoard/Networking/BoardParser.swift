@@ -15,16 +15,14 @@ class BoardParser {
                 var notices: [Notice] = []
                 
                 for element in elements {
-                    var noticeType = 0
-                    if try element.select(".seq").text() == "공지" {
-                        if(pageIndex != 0) { continue }
-                        noticeType = 1
-                    }
+                    let noticeId = try element.select(".seq").text()
                     
-                    notices.append(Notice(noticeType: noticeType,
-                                          noticeName: try element.select(".subject > a").text(),
-                                              noticeURL: try element.select(".subject > a").attr("href"),
-                                              noticeStatus: false))
+                    if(pageIndex != 0 && noticeId == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
+                    
+                    notices.append(Notice(id: noticeId == "공지" ? -1 : Int(noticeId)!,
+                                          type: noticeId == "공지" ? 0 : 1,
+                                          title: try element.select(".subject > a").text(),
+                                          url: try element.select(".subject > a").attr("href")))
                 }
                 callback(notices)
             } catch {

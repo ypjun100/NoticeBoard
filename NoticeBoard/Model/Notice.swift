@@ -1,8 +1,8 @@
 import Foundation
 
 struct Notice {
-    var noticeType: Int // 0 - 공지사항, 1 - 일반
-    var noticeName: String
-    var noticeURL: String
-    var noticeStatus: Bool
+    var id: Int
+    var type: Int // 0 - 공지사항, 1 - 일반
+    var title: String
+    var url: String
 }

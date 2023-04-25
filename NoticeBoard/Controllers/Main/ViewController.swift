@@ -16,6 +16,7 @@ class ViewController: NSViewController {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var progressIndicator: NSProgressIndicator!
     
+    let visitedNoticeManager = VisitedNoticeManager() // 게시글 방문여부 확인 매니저
     var pageIndex = 0 // 게시판 페이지 인덱스
     var notices: [Notice] = [] // 게시글
     
@@ -40,7 +41,8 @@ class ViewController: NSViewController {
     
     // 게시글 행 클릭시
     @objc func onItemClicked() {
-        NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.clickedRow].noticeURL)!)
+        visitedNoticeManager.addNotice(noticeId: notices[tableView.clickedRow].id)
+        NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.clickedRow].url)!)
     }
     
     // 사용자 스크롤 종료시
@@ -57,7 +59,6 @@ class ViewController: NSViewController {
     }
 }
 
-
 extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return (notices.count)
@@ -68,9 +69,15 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
         
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NoticeTableCell else { return nil }
         
-        cell.noticeType.stringValue = notice.noticeType == 0 ? "일반" : "공지"
-        cell.noticeType.textColor = notice.noticeType == 0 ? NSColor.textColor : NSColor(red: 0.8, green: 0.15, blue: 0, alpha: 1.0)
-        cell.noticeText.stringValue = notice.noticeName
+        cell.noticeType.stringValue = notice.type == 0 ? "공지" : "일반"
+        cell.noticeType.textColor = notice.type == 0 ? NSColor(red: 0.8, green: 0.15, blue: 0, alpha: 1.0) : NSColor.textColor
+        cell.noticeText.stringValue = notice.title
+        cell.noticeText.textColor = .textColor
+        
+        if(visitedNoticeManager.contains(noticeId: notice.id)) {
+            cell.noticeType.textColor = .gray
+            cell.noticeText.textColor = .gray
+        }
         
         return cell
     }

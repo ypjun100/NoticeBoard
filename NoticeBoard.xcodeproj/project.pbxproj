@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */; };
 		845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */; };
 		845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* ViewController.swift */; };
 		845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8229F37CAB007A4B80 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedNoticeManager.swift; sourceTree = "<group>"; };
 		845E8F7B29F37CA9007A4B80 /* NoticeBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoticeBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		845E8F8029F37CA9007A4B80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8429F10F29F7C95B00872089 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				84C17D4229F40676009CFF4F /* NoticeTableCell.swift */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		8429F11429F7C9B900872089 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		845E8F7229F37CA9007A4B80 = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +80,8 @@
 		845E8F7D29F37CA9007A4B80 /* NoticeBoard */ = {
 			isa = PBXGroup;
 			children = (
-				84C17D4129F403D4009CFF4F /* CustomControls */,
+				8429F11429F7C9B900872089 /* Utils */,
+				84C17D4129F403D4009CFF4F /* Custom Controls */,
 				84C17D3629F3D38D009CFF4F /* Supporting Files */,
 				84C17D3C29F3D472009CFF4F /* Model */,
 				84C17D3929F3D42F009CFF4F /* Networking */,
@@ -122,12 +141,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		84C17D4129F403D4009CFF4F /* CustomControls */ = {
+		84C17D4129F403D4009CFF4F /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
-				84C17D4229F40676009CFF4F /* NoticeTableCell.swift */,
+				8429F10F29F7C95B00872089 /* Xib */,
 			);
-			path = CustomControls;
+			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +230,7 @@
 				84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */,
 				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
 				84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */,
+				8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */,
 				845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */,
 				845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */,
 			);
