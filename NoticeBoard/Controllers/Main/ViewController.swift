@@ -37,12 +37,15 @@ class ViewController: NSViewController {
         tableView.action = #selector(onItemClicked) // 테이블 요소 선택시 액션
         
         NotificationCenter.default.addObserver(self, selector: #selector(onScrollEnded), name: NSScrollView.didEndLiveScrollNotification, object: nil) // 아래로 스크롤 시 알림
+        
+        visitedNoticeManager.removeAll() // 테스트용
     }
     
     // 게시글 행 클릭시
     @objc func onItemClicked() {
         visitedNoticeManager.addNotice(noticeId: notices[tableView.clickedRow].id)
         NSWorkspace.shared.open(URL(string: "https://home.sch.ac.kr/sch/06/010100.jsp" + notices[tableView.clickedRow].url)!)
+        tableView.reloadData(forRowIndexes: IndexSet(arrayLiteral: tableView.clickedRow), columnIndexes: IndexSet(integer: 0))
     }
     
     // 사용자 스크롤 종료시
