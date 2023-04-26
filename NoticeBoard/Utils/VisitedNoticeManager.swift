@@ -2,9 +2,11 @@ import Foundation
 
 class VisitedNoticeManager {
     var visitedNotices: [Int] = []
+    var boardName = ""
     
-    init() {
-        if let visitedNotices = UserDefaults.standard.object(forKey: "visited_notices") as? [Int] {
+    init(boardName: String) {
+        self.boardName = boardName
+        if let visitedNotices = UserDefaults.standard.object(forKey: "visited_notices_" + self.boardName) as? [Int] {
             self.visitedNotices = visitedNotices
         }
     }
@@ -22,7 +24,7 @@ class VisitedNoticeManager {
         }
         
         visitedNotices.append(noticeId)
-        UserDefaults.standard.set(visitedNotices, forKey: "visited_notices")
+        UserDefaults.standard.set(visitedNotices, forKey: "visited_notices_" + self.boardName)
     }
     
     func contains(noticeId: Int) -> Bool {
@@ -31,6 +33,6 @@ class VisitedNoticeManager {
     
     func removeAll() {
         visitedNotices.removeAll()
-        UserDefaults.standard.set(visitedNotices, forKey: "visited_notices")
+        UserDefaults.standard.set(visitedNotices, forKey: "visited_notices_" + self.boardName)
     }
 }

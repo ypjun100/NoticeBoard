@@ -19,7 +19,7 @@ class ViewController: NSViewController {
     
     var boardUrls: [[String]] = []
     var currentBoardSelectionIndex = 0
-    let visitedNoticeManager = VisitedNoticeManager() // 게시글 방문여부 확인 매니저
+    var visitedNoticeManagers: [VisitedNoticeManager] = [] // 각 게시판에 대한 게시글 방문여부 확인 매니저
     var boardPageIndex = 0 // 게시판 페이지 인덱스
     var notices: [Notice] = [] // 게시글
     
@@ -37,6 +37,8 @@ class ViewController: NSViewController {
                 for (i, elem) in data.enumerated() {
                     boardUrls.append(elem as! Array<String>)
                     boardSelectionMenu.addItem(withTitle: boardUrls[i][0], action: nil, keyEquivalent: "")
+                    visitedNoticeManagers.append(VisitedNoticeManager(boardName: boardUrls[i][0]))
+                    visitedNoticeManagers[i].removeAll() // 테스트
                 }
             }
         }
@@ -46,8 +48,6 @@ class ViewController: NSViewController {
         tableView.action = #selector(onItemClicked) // 테이블 요소 선택시 액션
         
         NotificationCenter.default.addObserver(self, selector: #selector(onScrollEnded), name: NSScrollView.didEndLiveScrollNotification, object: nil) // 아래로 스크롤 시
-        
-//        visitedNoticeManager.removeAll() // 전체 삭제
     }
     
     // 게시판 변경시
@@ -60,7 +60,7 @@ class ViewController: NSViewController {
     
     // 게시글 행 클릭시
     @objc func onItemClicked() {
-        visitedNoticeManager.addNotice(noticeId: notices[tableView.clickedRow].id)
+        visitedNoticeManagers[currentBoardSelectionIndex].addNotice(noticeId: notices[tableView.clickedRow].id)
         NSWorkspace.shared.open(URL(string: boardUrls[currentBoardSelectionIndex][1] + notices[tableView.clickedRow].url)!)
         tableView.reloadData(forRowIndexes: IndexSet(arrayLiteral: tableView.clickedRow), columnIndexes: IndexSet(integer: 0))
     }
@@ -104,7 +104,7 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
         cell.noticeText.stringValue = notice.title
         cell.noticeText.textColor = .textColor
         
-        if(visitedNoticeManager.contains(noticeId: notice.id)) {
+        if(visitedNoticeManagers[currentBoardSelectionIndex].contains(noticeId: notice.id)) {
             cell.noticeType.textColor = .gray
             cell.noticeText.textColor = .gray
         }
