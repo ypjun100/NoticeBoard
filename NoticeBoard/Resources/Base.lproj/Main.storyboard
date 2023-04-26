@@ -743,18 +743,15 @@
                                 <rect key="frame" x="20" y="514" width="426" height="40"/>
                                 <subviews>
                                     <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="Tks-LH-50h">
-                                        <rect key="frame" x="5" y="12" width="411" height="16"/>
-                                        <popUpButtonCell key="cell" type="bevel" title="대학공지" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="3Rw-aH-one" id="kQ7-UD-rd4">
+                                        <rect key="frame" x="5" y="20" width="411" height="0.0"/>
+                                        <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="kQ7-UD-rd4">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="YaS-SE-lQn">
-                                                <items>
-                                                    <menuItem title="대학공지" state="on" hidden="YES" id="3Rw-aH-one"/>
-                                                    <menuItem title="학과공지" id="vev-P9-eiX"/>
-                                                    <menuItem title="SW중심대학공지" id="JiR-3p-NuC"/>
-                                                </items>
-                                            </menu>
+                                            <menu key="menu" id="YaS-SE-lQn"/>
                                         </popUpButtonCell>
+                                        <connections>
+                                            <action selector="onBoardSelectionChagned:" target="XfG-lQ-9wD" id="TCK-nr-Qbw"/>
+                                        </connections>
                                     </popUpButton>
                                 </subviews>
                                 <constraints>
@@ -868,7 +865,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="boardSelectMenu" destination="YaS-SE-lQn" id="zvT-K4-Knh"/>
                         <outlet property="boardSelectView" destination="YcQ-zW-MyH" id="Zbo-3b-Cj6"/>
+                        <outlet property="boardSelectionMenu" destination="YaS-SE-lQn" id="3kx-F9-nYC"/>
+                        <outlet property="boardSelectionView" destination="YcQ-zW-MyH" id="kSz-N8-bvI"/>
                         <outlet property="progressIndicator" destination="FoU-uy-h9Y" id="NDZ-0C-FJ8"/>
                         <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
                         <outlet property="selectView" destination="YcQ-zW-MyH" id="7B1-s9-8Uy"/>
