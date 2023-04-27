@@ -11,17 +11,21 @@ import SwiftSoup
 
 class ViewController: NSViewController {
     
+    @IBOutlet var headerStackView: NSStackView!
     @IBOutlet var boardSelectionView: NSView!
     @IBOutlet var boardSelectionMenu: NSMenu!
     @IBOutlet var scrollView: NSScrollView!
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var progressIndicator: NSProgressIndicator!
+    @IBOutlet var searchView: NSView!
+    @IBOutlet var searchField: NSSearchField!
     
     var boardUrls: [[String]] = []
     var currentBoardSelectionIndex = 0
     var visitedNoticeManagers: [VisitedNoticeManager] = [] // 각 게시판에 대한 게시글 방문여부 확인 매니저
     var boardPageIndex = 0 // 게시판 페이지 인덱스
     var notices: [Notice] = [] // 게시글
+    var currentSearchKeyword = "" // 현재 검색 키워드
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,7 @@ class ViewController: NSViewController {
         // Board Select View UI 수정
         boardSelectionView.wantsLayer = true
         boardSelectionView.layer?.cornerRadius = 5.0
-        boardSelectionView.layer?.backgroundColor = CGColor(gray: 1.0, alpha: 0.05)
+        boardSelectionView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
         
         // 게시판 리스트 가져오기
         if let URL = Bundle.main.url(forResource: "BoardUrl", withExtension: "plist") {
@@ -72,6 +76,21 @@ class ViewController: NSViewController {
             updateBoardData()
         }
     }
+    @IBAction func onClickSearchButton(_ sender: Any) {
+        headerStackView.isHidden = true
+        searchView.isHidden = false
+        searchField.stringValue = ""
+    }
+    
+    @IBAction func onClickCloseSearchButton(_ sender: Any) {
+        if (currentSearchKeyword != "") {
+            currentSearchKeyword = ""
+            clearBoardData()
+            updateBoardData()
+        }
+        headerStackView.isHidden = false
+        searchView.isHidden = true
+    }
     
     func clearBoardData() {
         self.notices = []
@@ -81,7 +100,7 @@ class ViewController: NSViewController {
     // 게시판 데이터 가져오기
     func updateBoardData() {
         progressIndicator.startAnimation(self)
-        BoardParser.parse(url: boardUrls[currentBoardSelectionIndex][1], pageIndex: boardPageIndex) { notices in
+        BoardParser.parse(url: boardUrls[currentBoardSelectionIndex][1], searchKeyword: currentSearchKeyword, pageIndex: boardPageIndex) { notices in
             self.notices.append(contentsOf: notices)
             self.tableView.reloadData()
             self.progressIndicator.stopAnimation(self)
@@ -114,5 +133,19 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         tableView.deselectRow(tableView.selectedRow) // 클릭 후 포커스가 유지되는 현상 방지
+    }
+}
+
+extension ViewController: NSTextFieldDelegate {
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        if (commandSelector == #selector(NSResponder.insertNewline(_:))) {
+            if (searchField.stringValue != "") {
+                currentSearchKeyword = searchField.stringValue
+                clearBoardData()
+                updateBoardData()
+            }
+            return true
+        }
+        return false
     }
 }

@@ -728,8 +728,14 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="onClickSearchButton:" target="XfG-lQ-9wD" id="nvV-Qv-ZqC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="csJ-aC-A6L"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -739,6 +745,41 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qk5-7j-tdX" userLabel="Search View">
+                                <rect key="frame" x="0.0" y="554" width="466" height="49"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="FDj-Sb-u1p">
+                                        <rect key="frame" x="20" y="3" width="15" height="43"/>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="xmark" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="1PV-bg-vE6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="onClickCloseSearchButton:" target="XfG-lQ-9wD" id="c11-fC-5PF"/>
+                                        </connections>
+                                    </button>
+                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQb-4X-ThL">
+                                        <rect key="frame" x="45" y="5" width="401" height="39"/>
+                                        <searchFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" placeholderString="검색할 키워드를 입력하세요." usesSingleLineMode="YES" bezelStyle="round" id="ZwX-q3-VZE">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </searchFieldCell>
+                                        <connections>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="aoT-lc-dEq"/>
+                                        </connections>
+                                    </searchField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PQb-4X-ThL" firstAttribute="leading" secondItem="FDj-Sb-u1p" secondAttribute="trailing" constant="10" id="5cP-6L-wMt"/>
+                                    <constraint firstAttribute="bottom" secondItem="PQb-4X-ThL" secondAttribute="bottom" constant="5" id="Hmv-g1-1kT"/>
+                                    <constraint firstItem="PQb-4X-ThL" firstAttribute="top" secondItem="Qk5-7j-tdX" secondAttribute="top" constant="5" id="MaT-hx-Ygx"/>
+                                    <constraint firstItem="FDj-Sb-u1p" firstAttribute="top" secondItem="Qk5-7j-tdX" secondAttribute="top" constant="5" id="VH9-1d-I84"/>
+                                    <constraint firstAttribute="trailing" secondItem="PQb-4X-ThL" secondAttribute="trailing" constant="20" id="fdq-vF-4jx"/>
+                                    <constraint firstItem="FDj-Sb-u1p" firstAttribute="leading" secondItem="Qk5-7j-tdX" secondAttribute="leading" constant="20" id="god-Z3-jb4"/>
+                                    <constraint firstAttribute="bottom" secondItem="FDj-Sb-u1p" secondAttribute="bottom" constant="5" id="kFd-I2-6hu"/>
+                                </constraints>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-zW-MyH" userLabel="Board Select View">
                                 <rect key="frame" x="20" y="514" width="426" height="40"/>
                                 <subviews>
@@ -852,6 +893,9 @@
                         <constraints>
                             <constraint firstItem="YcQ-zW-MyH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="05n-WN-NOF"/>
                             <constraint firstAttribute="trailing" secondItem="YcQ-zW-MyH" secondAttribute="trailing" constant="20" id="2zO-Gk-bw0"/>
+                            <constraint firstAttribute="trailing" secondItem="Qk5-7j-tdX" secondAttribute="trailing" id="54i-Hf-sBg"/>
+                            <constraint firstItem="Qk5-7j-tdX" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="5mD-BX-vuU"/>
+                            <constraint firstItem="Qk5-7j-tdX" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="6JD-e4-1Oe"/>
                             <constraint firstItem="cOi-Bs-9Ha" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="91V-QC-Srh"/>
                             <constraint firstItem="bWW-P7-zp2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="CGj-Zk-x0Z"/>
                             <constraint firstItem="FoU-uy-h9Y" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Nws-gE-ahH"/>
@@ -862,6 +906,7 @@
                             <constraint firstItem="cOi-Bs-9Ha" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="jF0-zb-u5r"/>
                             <constraint firstAttribute="trailing" secondItem="cOi-Bs-9Ha" secondAttribute="trailing" constant="20" id="nKa-hZ-TeN"/>
                             <constraint firstItem="YcQ-zW-MyH" firstAttribute="top" secondItem="cOi-Bs-9Ha" secondAttribute="bottom" constant="10" id="xiu-du-tKp"/>
+                            <constraint firstItem="Qk5-7j-tdX" firstAttribute="baseline" secondItem="YcQ-zW-MyH" secondAttribute="firstBaseline" id="yAp-s9-r8C"/>
                         </constraints>
                     </view>
                     <connections>
@@ -869,8 +914,11 @@
                         <outlet property="boardSelectView" destination="YcQ-zW-MyH" id="Zbo-3b-Cj6"/>
                         <outlet property="boardSelectionMenu" destination="YaS-SE-lQn" id="3kx-F9-nYC"/>
                         <outlet property="boardSelectionView" destination="YcQ-zW-MyH" id="kSz-N8-bvI"/>
+                        <outlet property="headerStackView" destination="cOi-Bs-9Ha" id="EPr-O7-U9d"/>
                         <outlet property="progressIndicator" destination="FoU-uy-h9Y" id="NDZ-0C-FJ8"/>
                         <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
+                        <outlet property="searchField" destination="PQb-4X-ThL" id="pDj-we-Q9n"/>
+                        <outlet property="searchView" destination="Qk5-7j-tdX" id="xfc-zb-ELw"/>
                         <outlet property="selectView" destination="YcQ-zW-MyH" id="7B1-s9-8Uy"/>
                         <outlet property="tableView" destination="QsR-RF-8pl" id="wga-bw-FYr"/>
                     </connections>
@@ -882,5 +930,6 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="15" height="15"/>
+        <image name="xmark" catalog="system" width="15" height="13"/>
     </resources>
 </document>
