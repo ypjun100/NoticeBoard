@@ -42,7 +42,7 @@ class ViewController: NSViewController {
                     boardUrls.append(elem as! Array<String>)
                     boardSelectionMenu.addItem(withTitle: boardUrls[i][0], action: nil, keyEquivalent: "")
                     visitedNoticeManagers.append(VisitedNoticeManager(boardName: boardUrls[i][0]))
-                    visitedNoticeManagers[i].removeAll() // 테스트
+//                    visitedNoticeManagers[i].removeAll() // 테스트
                 }
             }
         }

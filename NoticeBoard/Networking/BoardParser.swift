@@ -22,7 +22,7 @@ class BoardParser {
                 for element in elements {
                     let noticeId = try element.select(".seq").text()
                     
-                    if (noticeId == "") { continue } // noticeId가 존재하지 않으면 건너뜀
+                    if (noticeId == "") { continue } // noticeId가 존재하지 않으면 건너뜀 (더 이상 게시글이 없는 경우도 해당)
                     if(searchKeyword != "" && noticeId == "공지") { continue } // 검색하고 있을 때는 공지글을 제외
                     if(pageIndex != 0 && noticeId == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
