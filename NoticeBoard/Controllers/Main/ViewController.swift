@@ -57,7 +57,6 @@ class ViewController: NSViewController {
     // 게시판 변경시
     @IBAction func onBoardSelectionChagned(_ sender: NSPopUpButton) {
         currentBoardSelectionIndex = sender.indexOfSelectedItem
-        boardPageIndex = 0
         clearBoardData()
         updateBoardData()
     }
@@ -93,6 +92,7 @@ class ViewController: NSViewController {
     }
     
     func clearBoardData() {
+        self.boardPageIndex = 0
         self.notices = []
         self.tableView.reloadData()
     }
