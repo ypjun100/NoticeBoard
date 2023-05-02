@@ -4,6 +4,7 @@
 //
 //  Created by 윤준영 on 2023/04/22.
 //
+// icon image is from https://www.vecteezy.com/png/9847903-3d-notification-bell-set-ecommerce-icon
 
 import Cocoa
 

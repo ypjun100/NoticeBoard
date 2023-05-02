@@ -19,6 +19,7 @@
 		84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3A29F3D451009CFF4F /* BoardParser.swift */; };
 		84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3D29F3D52F009CFF4F /* Notice.swift */; };
 		84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D4229F40676009CFF4F /* NoticeTableCell.swift */; };
+		84C1B9D12A00D31C00D8A529 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84C1B9D32A00D31C00D8A529 /* InfoPlist.strings */; };
 		84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,8 @@
 		84C17D3A29F3D451009CFF4F /* BoardParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardParser.swift; sourceTree = "<group>"; };
 		84C17D3D29F3D52F009CFF4F /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		84C17D4229F40676009CFF4F /* NoticeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
+		84C1B9C92A00D1BD00D8A529 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		84C1B9D22A00D31C00D8A529 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedNoticeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +121,7 @@
 		84C17D3629F3D38D009CFF4F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84C1B9D32A00D31C00D8A529 /* InfoPlist.strings */,
 				845E8F8729F37CAB007A4B80 /* NoticeBoard.entitlements */,
 				845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */,
 			);
@@ -212,6 +216,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 845E8F7229F37CA9007A4B80;
 			packageReferences = (
@@ -233,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A12B3E29F9185500180223 /* BoardUrl.plist in Resources */,
+				84C1B9D12A00D31C00D8A529 /* InfoPlist.strings in Resources */,
 				845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */,
 				845E8F8629F37CAB007A4B80 /* Main.storyboard in Resources */,
 			);
@@ -263,8 +269,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				845E8F8529F37CAB007A4B80 /* Base */,
+				84C1B9C92A00D1BD00D8A529 /* ko */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84C1B9D32A00D31C00D8A529 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C1B9D22A00D31C00D8A529 /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -274,6 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -320,6 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Notice Board";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -334,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -374,6 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Notice Board";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -395,6 +414,7 @@
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NoticeBoard;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -423,6 +443,7 @@
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NoticeBoard;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -433,7 +454,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junyoung.NoticeBoard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NoticeBoard;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
