@@ -7,12 +7,12 @@
 		<string>https://home.sch.ac.kr/sch/06/010100.jsp</string>
 	</array>
 	<array>
-		<string>학과공지</string>
-		<string>https://home.sch.ac.kr/aibigdata/03/0101.jsp</string>
-	</array>
-	<array>
 		<string>SW중심대학공지</string>
 		<string>https://home.sch.ac.kr/sw/07/010000.jsp</string>
+	</array>
+	<array>
+		<string>학과공지</string>
+		<string>https://home.sch.ac.kr/aibigdata/03/0101.jsp</string>
 	</array>
 </array>
 </plist>

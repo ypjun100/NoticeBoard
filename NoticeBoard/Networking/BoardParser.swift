@@ -29,7 +29,7 @@ class BoardParser {
                     notices.append(Notice(id: noticeId == "공지" ? -1 : Int(noticeId)!,
                                           type: noticeId == "공지" ? 0 : 1,
                                           title: try element.select(".subject > a").text(),
-                                          url: try element.select(".subject > a").attr("href")))
+                                          url: url + String(try element.select(".subject > a").attr("href"))))
                 }
                 callback(notices)
             } catch {

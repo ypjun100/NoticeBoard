@@ -27,6 +27,8 @@ class ViewController: NSViewController {
     var notices: [Notice] = [] // 게시글
     var currentSearchKeyword = "" // 현재 검색 키워드
     
+    let bookmarkedNoticeManger = BookmarkedNoticeManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,7 +66,7 @@ class ViewController: NSViewController {
     // 게시글 행 클릭시
     @objc func onItemClicked() {
         visitedNoticeManagers[currentBoardSelectionIndex].addNotice(noticeId: notices[tableView.clickedRow].id)
-        NSWorkspace.shared.open(URL(string: boardUrls[currentBoardSelectionIndex][1] + notices[tableView.clickedRow].url)!)
+        NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!)
         tableView.reloadData(forRowIndexes: IndexSet(arrayLiteral: tableView.clickedRow), columnIndexes: IndexSet(integer: 0))
     }
     
@@ -91,6 +93,24 @@ class ViewController: NSViewController {
         searchView.isHidden = true
     }
     
+    @IBAction func onBookmarked(_ sender: NSMenuItem) {
+        if (notices[tableView.clickedRow].id == -1) {
+            showAlert(message: "공지사항은 북마크할 수 없습니다.")
+            return
+        }
+        if (sender.title == "북마크 지정") {
+            bookmarkedNoticeManger.addNotice(notice: notices[tableView.clickedRow])
+        } else {
+            bookmarkedNoticeManger.remove(noticeId: notices[tableView.clickedRow].id)
+        }
+    }
+    
+    @IBAction func onClickBookmark(_ sender: Any) {
+        if let controller = self.storyboard?.instantiateController(withIdentifier: "bookmarkview") as? BookmarkViewController {
+            self.view.window?.contentViewController = controller
+        }
+    }
+    
     func clearBoardData() {
         self.boardPageIndex = 0
         self.notices = []
@@ -105,6 +125,13 @@ class ViewController: NSViewController {
             self.tableView.reloadData()
             self.progressIndicator.stopAnimation(self)
         }
+    }
+    
+    func showAlert(message: String) {
+        let alert = NSAlert()
+        alert.alertStyle = .critical
+        alert.messageText = message
+        alert.beginSheetModal(for: self.view.window!)
     }
 }
 
@@ -147,5 +174,15 @@ extension ViewController: NSTextFieldDelegate {
             return true
         }
         return false
+    }
+}
+
+extension ViewController: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        if (bookmarkedNoticeManger.contains(noticeId: notices[tableView.clickedRow].id)) {
+            menu.item(at: 0)?.title = "북마크 해제"
+        } else {
+            menu.item(at: 0)?.title = "북마크 지정"
+        }
     }
 }

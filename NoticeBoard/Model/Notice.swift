@@ -1,6 +1,6 @@
 import Foundation
 
-struct Notice {
+struct Notice: Codable {
     var id: Int
     var type: Int // 0 - 공지사항, 1 - 일반
     var title: String

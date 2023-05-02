@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B0B29FFEC42006643BF /* BookmarkController.swift */; };
 		8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */; };
 		845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */; };
 		845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* ViewController.swift */; };
@@ -18,9 +19,11 @@
 		84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3A29F3D451009CFF4F /* BoardParser.swift */; };
 		84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3D29F3D52F009CFF4F /* Notice.swift */; };
 		84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D4229F40676009CFF4F /* NoticeTableCell.swift */; };
+		84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840B1B0B29FFEC42006643BF /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedNoticeManager.swift; sourceTree = "<group>"; };
 		845E8F7B29F37CA9007A4B80 /* NoticeBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoticeBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		84C17D3A29F3D451009CFF4F /* BoardParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardParser.swift; sourceTree = "<group>"; };
 		84C17D3D29F3D52F009CFF4F /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		84C17D4229F40676009CFF4F /* NoticeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
+		84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedNoticeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840B1B0A29FFEC2E006643BF /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				840B1B0B29FFEC42006643BF /* BookmarkController.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
 		8429F10F29F7C95B00872089 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */,
+				84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -97,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				84C17D3729F3D3AF009CFF4F /* Main */,
+				840B1B0A29FFEC2E006643BF /* Bookmark */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,7 +247,9 @@
 			files = (
 				84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */,
 				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
+				840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */,
 				84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */,
+				84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */,
 				8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */,
 				845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */,
 				845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */,
