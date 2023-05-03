@@ -1035,19 +1035,8 @@
                                                             <rect key="frame" x="10" y="2" width="426" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mpa-KW-f0n" userLabel="Table Name">
-                                                                    <rect key="frame" x="-2" y="12" width="27" height="16"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="MZz-qe-x6Z"/>
-                                                                    </constraints>
-                                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="일반" id="9fW-gn-pIb">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9z2-0u-cFh" userLabel="Notice Text">
-                                                                    <rect key="frame" x="31" y="12" width="397" height="16"/>
+                                                                    <rect key="frame" x="-2" y="12" width="430" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="게시글 이름" id="RXX-SD-1KD">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1056,16 +1045,12 @@
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="9z2-0u-cFh" firstAttribute="leading" secondItem="Mpa-KW-f0n" secondAttribute="trailing" constant="10" id="8f8-XI-j5t"/>
-                                                                <constraint firstItem="Mpa-KW-f0n" firstAttribute="leading" secondItem="xvs-2I-Yml" secondAttribute="leading" id="KSa-oo-ZQh"/>
+                                                                <constraint firstItem="9z2-0u-cFh" firstAttribute="leading" secondItem="xvs-2I-Yml" secondAttribute="leading" id="JhI-a7-SOg"/>
                                                                 <constraint firstItem="9z2-0u-cFh" firstAttribute="centerY" secondItem="xvs-2I-Yml" secondAttribute="centerY" id="mTp-Wp-xOi"/>
                                                                 <constraint firstAttribute="trailing" secondItem="9z2-0u-cFh" secondAttribute="trailing" id="o59-OV-XhL"/>
-                                                                <constraint firstItem="Mpa-KW-f0n" firstAttribute="centerY" secondItem="xvs-2I-Yml" secondAttribute="centerY" id="v1d-ry-CEZ"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="noticeText" destination="9z2-0u-cFh" id="otb-hb-e9U"/>
-                                                                <outlet property="noticeType" destination="Mpa-KW-f0n" id="HDC-gy-E9q"/>
-                                                                <outlet property="noticeTypeText" destination="Mpa-KW-f0n" id="wH4-FR-F5r"/>
                                                                 <outlet property="textField" destination="9z2-0u-cFh" id="bPL-bp-JPu"/>
                                                             </connections>
                                                         </tableCellView>
@@ -1075,6 +1060,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="OZT-LM-eaz" id="ekb-yO-lXL"/>
                                                 <outlet property="delegate" destination="OZT-LM-eaz" id="7YH-cR-Q4c"/>
+                                                <outlet property="menu" destination="KK2-Qb-WQe" id="eHX-7j-JHl"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -1107,6 +1093,19 @@
                     </connections>
                 </viewController>
                 <customObject id="xvc-Lz-OJH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu showsStateColumn="NO" autoenablesItems="NO" id="KK2-Qb-WQe">
+                    <items>
+                        <menuItem title="북마크 해제" id="fMk-Rm-rEO">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="onBookmarked:" target="OZT-LM-eaz" id="aah-mC-pKh"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="OZT-LM-eaz" id="T5F-9y-wzM"/>
+                    </connections>
+                </menu>
             </objects>
             <point key="canvasLocation" x="576" y="882"/>
         </scene>

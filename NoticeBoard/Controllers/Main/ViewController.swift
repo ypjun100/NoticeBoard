@@ -27,7 +27,7 @@ class ViewController: NSViewController {
     var notices: [Notice] = [] // 게시글
     var currentSearchKeyword = "" // 현재 검색 키워드
     
-    let bookmarkedNoticeManger = BookmarkedNoticeManager()
+    let bookmarkedNoticeManager = BookmarkedNoticeManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,9 +99,9 @@ class ViewController: NSViewController {
             return
         }
         if (sender.title == "북마크 지정") {
-            bookmarkedNoticeManger.addNotice(notice: notices[tableView.clickedRow])
+            bookmarkedNoticeManager.addNotice(notice: notices[tableView.clickedRow])
         } else {
-            bookmarkedNoticeManger.remove(noticeId: notices[tableView.clickedRow].id)
+            bookmarkedNoticeManager.remove(noticeId: notices[tableView.clickedRow].id)
         }
     }
     
@@ -179,7 +179,7 @@ extension ViewController: NSTextFieldDelegate {
 
 extension ViewController: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-        if (bookmarkedNoticeManger.contains(noticeId: notices[tableView.clickedRow].id)) {
+        if (bookmarkedNoticeManager.contains(noticeId: notices[tableView.clickedRow].id)) {
             menu.item(at: 0)?.title = "북마크 해제"
         } else {
             menu.item(at: 0)?.title = "북마크 지정"

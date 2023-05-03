@@ -1,10 +1,3 @@
-//
-//  BookMarkController.swift
-//  NoticeBoard
-//
-//  Created by 윤준영 on 2023/05/01.
-//
-
 import Cocoa
 
 class BookmarkViewController: NSViewController {
@@ -49,6 +42,12 @@ class BookmarkViewController: NSViewController {
     @objc func onItemClicked() {
         NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!)
     }
+    
+    @IBAction func onBookmarked(_ sender: Any) {
+        self.bookmarkedNoticeManager.remove(noticeId: notices[tableView.clickedRow].id)
+        self.notices = self.bookmarkedNoticeManager.getNotices()
+        self.tableView.reloadData()
+    }
 }
 
 extension BookmarkViewController: NSTableViewDataSource, NSTableViewDelegate {
@@ -61,8 +60,6 @@ extension BookmarkViewController: NSTableViewDataSource, NSTableViewDelegate {
         
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NoticeTableCell else { return nil }
         
-        cell.noticeType.stringValue = notice.type == 0 ? "공지" : "일반"
-        cell.noticeType.textColor = notice.type == 0 ? NSColor(red: 0.8, green: 0.15, blue: 0, alpha: 1.0) : NSColor.textColor
         cell.noticeText.stringValue = notice.title
         cell.noticeText.textColor = .textColor
         
