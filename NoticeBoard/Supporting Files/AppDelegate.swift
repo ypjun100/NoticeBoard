@@ -11,8 +11,15 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    @IBOutlet weak var infoMenuItem: NSMenuItem!
+    @IBOutlet weak var settingsMenuItem: NSMenuItem!
+    @IBOutlet weak var quitMenuItem: NSMenuItem!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        infoMenuItem.title = "정보"
+        settingsMenuItem.title = "설정"
+        quitMenuItem.title = "종료"
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

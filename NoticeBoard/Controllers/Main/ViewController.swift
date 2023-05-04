@@ -31,6 +31,9 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        settingsMenuItem.title = "설정"
+//        quitMenuItem.title = "종료"
 
         // Board Select View UI 수정
         boardSelectionView.wantsLayer = true

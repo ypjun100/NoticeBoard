@@ -3,6 +3,7 @@ import Cocoa
 class BookmarkViewController: NSViewController {
     
     @IBOutlet var tableView: NSTableView!
+    @IBOutlet var noBookmarkedLabel: NSTextField!
     
     var notices: [Notice] = [] // 게시글
     let bookmarkedNoticeManager = BookmarkedNoticeManager()
@@ -10,8 +11,7 @@ class BookmarkViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.notices = bookmarkedNoticeManager.getNotices()
-        self.tableView.reloadData()
+        updateBookmark()
         
         tableView.action = #selector(onItemClicked)
     }
@@ -33,8 +33,7 @@ class BookmarkViewController: NSViewController {
         alert.beginSheetModal(for: self.view.window!) { (response) in
             if response.rawValue == 1000 {
                 self.bookmarkedNoticeManager.removeAll()
-                self.notices = []
-                self.tableView.reloadData()
+                self.updateBookmark()
             }
         }
     }
@@ -45,8 +44,14 @@ class BookmarkViewController: NSViewController {
     
     @IBAction func onBookmarked(_ sender: Any) {
         self.bookmarkedNoticeManager.remove(noticeId: notices[tableView.clickedRow].id)
+        updateBookmark()
+    }
+    
+    func updateBookmark() {
         self.notices = self.bookmarkedNoticeManager.getNotices()
         self.tableView.reloadData()
+        
+        noBookmarkedLabel.isHidden = self.notices.count == 0 ? false : true
     }
 }
 

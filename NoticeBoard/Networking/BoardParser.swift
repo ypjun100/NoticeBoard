@@ -26,9 +26,12 @@ class BoardParser {
                     if(searchKeyword != "" && noticeId == "공지") { continue } // 검색하고 있을 때는 공지글을 제외
                     if(pageIndex != 0 && noticeId == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
+                    let title = try element.select(".subject > a")
+                    try title.select("span").remove() // a 태그 내의 span 태그 삭제
+                    
                     notices.append(Notice(id: noticeId == "공지" ? -1 : Int(noticeId)!,
                                           type: noticeId == "공지" ? 0 : 1,
-                                          title: try element.select(".subject > a").text(),
+                                          title: try title.text(),
                                           url: url + String(try element.select(".subject > a").attr("href"))))
                 }
                 callback(notices)
