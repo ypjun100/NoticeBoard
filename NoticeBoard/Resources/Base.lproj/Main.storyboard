@@ -23,7 +23,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="설정" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="설정" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="bTR-jP-WwO" kind="modal" id="t2w-29-GWS"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
                                         <menuItem title="종료" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
@@ -49,13 +53,13 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="-185"/>
+            <point key="canvasLocation" x="-25" y="-330"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                    <window key="window" title="공지사항" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="561" y="334" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -73,10 +77,106 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--설정-->
+        <scene sceneID="gQW-Ry-tGK">
+            <objects>
+                <viewController title="설정" id="bTR-jP-WwO" customClass="SettingsController" customModule="NoticeBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="wPO-d0-o1A">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="115"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yR-G2-vZK">
+                                <rect key="frame" x="20" y="46" width="260" height="20"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V3B-U3-3ah">
+                                        <rect key="frame" x="-2" y="4" width="75" height="13"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="방문한 게시글" id="s62-2y-XHu">
+                                            <font key="font" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Vr-ul-fgu">
+                                        <rect key="frame" x="209" y="-7" width="58" height="32"/>
+                                        <buttonCell key="cell" type="push" title="삭제" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lyT-oJ-wHC">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="onDeleteVisitedNoticesClicked:" target="bTR-jP-WwO" id="qRP-Pt-8Ok"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7XC-uE-iqn">
+                                <rect key="frame" x="18" y="76" width="264" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="데이터" id="efn-Z3-UI9">
+                                    <font key="font" metaFont="systemBold" size="15"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="118" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfd-Tw-H7k">
+                                <rect key="frame" x="20" y="21" width="260" height="20"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ki-fE-LII">
+                                        <rect key="frame" x="-2" y="4" width="75" height="13"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="북마크 게시글" id="W5T-34-i27">
+                                            <font key="font" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DQK-qX-oHv">
+                                        <rect key="frame" x="209" y="-7" width="58" height="32"/>
+                                        <buttonCell key="cell" type="push" title="삭제" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SMf-Dw-Vjk">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="onDeleteBookmarkedNoticesClicked:" target="bTR-jP-WwO" id="CEj-5u-KxB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Tfd-Tw-H7k" firstAttribute="leading" secondItem="wPO-d0-o1A" secondAttribute="leading" constant="20" id="0y6-R0-P5h"/>
+                            <constraint firstAttribute="trailing" secondItem="7XC-uE-iqn" secondAttribute="trailing" constant="20" id="7j5-0F-JtE"/>
+                            <constraint firstItem="7XC-uE-iqn" firstAttribute="top" secondItem="wPO-d0-o1A" secondAttribute="top" constant="20" id="GvS-8v-K9e"/>
+                            <constraint firstItem="Tfd-Tw-H7k" firstAttribute="top" secondItem="2yR-G2-vZK" secondAttribute="bottom" constant="5" id="YFi-pG-JXL"/>
+                            <constraint firstItem="7XC-uE-iqn" firstAttribute="leading" secondItem="wPO-d0-o1A" secondAttribute="leading" constant="20" id="gfu-9e-kIE"/>
+                            <constraint firstItem="2yR-G2-vZK" firstAttribute="top" secondItem="7XC-uE-iqn" secondAttribute="bottom" constant="10" id="iDi-50-fJt"/>
+                            <constraint firstAttribute="trailing" secondItem="Tfd-Tw-H7k" secondAttribute="trailing" constant="20" id="mZa-Bs-3zu"/>
+                            <constraint firstItem="2yR-G2-vZK" firstAttribute="leading" secondItem="wPO-d0-o1A" secondAttribute="leading" constant="20" id="nKV-G4-OkC"/>
+                            <constraint firstAttribute="trailing" secondItem="2yR-G2-vZK" secondAttribute="trailing" constant="20" id="sno-x5-GUE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="kZC-fK-S8I" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="576" y="178.5"/>
+        </scene>
+        <!--공지사항-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="main" id="XfG-lQ-9wD" customClass="ViewController" customModule="NoticeBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="공지사항" storyboardIdentifier="main" id="XfG-lQ-9wD" customClass="ViewController" customModule="NoticeBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="466" height="603"/>
                         <autoresizingMask key="autoresizingMask"/>

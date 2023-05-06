@@ -11,10 +11,13 @@ class BookmarkViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onBookmarkedNoticesChanged), name: Notification.Name(rawValue: "bookmarkedNoticesChanged"), object: nil)
+        
         updateBookmark()
         
         tableView.action = #selector(onItemClicked)
     }
+    
     
     @IBAction func onBack(_ sender: Any) {
         if let controller = self.storyboard?.instantiateController(withIdentifier: "main") as? ViewController {
@@ -52,6 +55,11 @@ class BookmarkViewController: NSViewController {
         self.tableView.reloadData()
         
         noBookmarkedLabel.isHidden = self.notices.count == 0 ? false : true
+    }
+    
+    @objc func onBookmarkedNoticesChanged(_ notification: NSNotification) {
+        self.bookmarkedNoticeManager.updateData()
+        self.tableView.reloadData()
     }
 }
 

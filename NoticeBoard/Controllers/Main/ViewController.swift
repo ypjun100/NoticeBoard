@@ -32,9 +32,8 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        settingsMenuItem.title = "설정"
-//        quitMenuItem.title = "종료"
-
+        NotificationCenter.default.addObserver(self, selector: #selector(onVisitedNoticesChanged), name: Notification.Name(rawValue: "visitedNoticesChanged"), object: nil)
+        
         // Board Select View UI 수정
         boardSelectionView.wantsLayer = true
         boardSelectionView.layer?.cornerRadius = 5.0
@@ -47,7 +46,6 @@ class ViewController: NSViewController {
                     boardUrls.append(elem as! Array<String>)
                     boardSelectionMenu.addItem(withTitle: boardUrls[i][0], action: nil, keyEquivalent: "")
                     visitedNoticeManagers.append(VisitedNoticeManager(boardName: boardUrls[i][0]))
-//                    visitedNoticeManagers[i].removeAll() // 테스트
                 }
             }
         }
@@ -135,6 +133,13 @@ class ViewController: NSViewController {
         alert.alertStyle = .critical
         alert.messageText = message
         alert.beginSheetModal(for: self.view.window!)
+    }
+    
+    @objc func onVisitedNoticesChanged(_ notification: NSNotification) {
+        for visitedNoticeManager in visitedNoticeManagers {
+            visitedNoticeManager.updateData()
+        }
+        self.tableView.reloadData()
     }
 }
 

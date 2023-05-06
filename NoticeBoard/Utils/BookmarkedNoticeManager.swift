@@ -50,6 +50,17 @@ class BookmarkedNoticeManager {
         return false
     }
     
+    func updateData() {
+        bookmarkedNotices = []
+        if let encodedBookmarkedNotices = UserDefaults.standard.object(forKey: "bookmarked_notices") as? [Data] {
+            for encodedBookmarkedNotice in encodedBookmarkedNotices {
+                if let bookmarkedNotice = try? decoder.decode(Notice.self, from: encodedBookmarkedNotice) {
+                    self.bookmarkedNotices.append(bookmarkedNotice)
+                }
+            }
+        }
+    }
+    
     func remove(noticeId: Int) {
         for (i, notice) in bookmarkedNotices.enumerated() {
             if (notice.id == noticeId) {

@@ -31,6 +31,12 @@ class VisitedNoticeManager {
         return visitedNotices.contains(noticeId)
     }
     
+    func updateData() {
+        if let visitedNotices = UserDefaults.standard.object(forKey: "visited_notices_" + self.boardName) as? [Int] {
+            self.visitedNotices = visitedNotices
+        }
+    }
+    
     func removeAll() {
         visitedNotices.removeAll()
         UserDefaults.standard.set(visitedNotices, forKey: "visited_notices_" + self.boardName)

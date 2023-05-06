@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B0B29FFEC42006643BF /* BookmarkController.swift */; };
+		8425CC402A033D5200F660A7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425CC3F2A033D5200F660A7 /* SettingsController.swift */; };
 		8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */; };
 		845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */; };
 		845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		840B1B0B29FFEC42006643BF /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
+		8425CC3F2A033D5200F660A7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedNoticeManager.swift; sourceTree = "<group>"; };
 		845E8F7B29F37CA9007A4B80 /* NoticeBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoticeBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 				840B1B0B29FFEC42006643BF /* BookmarkController.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		8425CC3E2A033D3C00F660A7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8425CC3F2A033D5200F660A7 /* SettingsController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		8429F10F29F7C95B00872089 /* Xib */ = {
@@ -114,6 +124,7 @@
 			children = (
 				84C17D3729F3D3AF009CFF4F /* Main */,
 				840B1B0A29FFEC2E006643BF /* Bookmark */,
+				8425CC3E2A033D3C00F660A7 /* Settings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8425CC402A033D5200F660A7 /* SettingsController.swift in Sources */,
 				84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */,
 				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
 				840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */,
