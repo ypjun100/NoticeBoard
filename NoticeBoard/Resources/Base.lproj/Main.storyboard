@@ -89,9 +89,9 @@
                                 <rect key="frame" x="20" y="46" width="260" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V3B-U3-3ah">
-                                        <rect key="frame" x="-2" y="4" width="75" height="13"/>
+                                        <rect key="frame" x="-2" y="2" width="76" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="방문한 게시글" id="s62-2y-XHu">
-                                            <font key="font" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -128,9 +128,9 @@
                                 <rect key="frame" x="20" y="21" width="260" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ki-fE-LII">
-                                        <rect key="frame" x="-2" y="4" width="75" height="13"/>
+                                        <rect key="frame" x="-2" y="2" width="76" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="북마크 게시글" id="W5T-34-i27">
-                                            <font key="font" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -176,7 +176,7 @@
         <!--공지사항-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="공지사항" storyboardIdentifier="main" id="XfG-lQ-9wD" customClass="ViewController" customModule="NoticeBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="공지사항" storyboardIdentifier="main" id="XfG-lQ-9wD" customClass="MainController" customModule="NoticeBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="466" height="603"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -202,7 +202,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="onClickBookmark:" target="XfG-lQ-9wD" id="KKB-66-0XR"/>
+                                                    <action selector="onBookmarkButtonClicked:" target="XfG-lQ-9wD" id="ZvJ-8o-ygM"/>
                                                 </connections>
                                             </button>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-dM-nz3">
@@ -212,7 +212,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="onClickSearchButton:" target="XfG-lQ-9wD" id="nvV-Qv-ZqC"/>
+                                                    <action selector="onSearchButtonClicked:" target="XfG-lQ-9wD" id="Sh6-Hb-aFE"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -248,7 +248,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="onClickCloseSearchButton:" target="XfG-lQ-9wD" id="c11-fC-5PF"/>
+                                            <action selector="onCloseSearchButtonClicked:" target="XfG-lQ-9wD" id="366-5U-IbR"/>
                                         </connections>
                                     </button>
                                     <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQb-4X-ThL">
@@ -404,8 +404,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="boardSelectMenu" destination="YaS-SE-lQn" id="zvT-K4-Knh"/>
-                        <outlet property="boardSelectView" destination="YcQ-zW-MyH" id="Zbo-3b-Cj6"/>
                         <outlet property="boardSelectionMenu" destination="YaS-SE-lQn" id="3kx-F9-nYC"/>
                         <outlet property="boardSelectionView" destination="YcQ-zW-MyH" id="kSz-N8-bvI"/>
                         <outlet property="headerStackView" destination="cOi-Bs-9Ha" id="EPr-O7-U9d"/>
@@ -413,7 +411,6 @@
                         <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
                         <outlet property="searchField" destination="PQb-4X-ThL" id="pDj-we-Q9n"/>
                         <outlet property="searchView" destination="Qk5-7j-tdX" id="xfc-zb-ELw"/>
-                        <outlet property="selectView" destination="YcQ-zW-MyH" id="7B1-s9-8Uy"/>
                         <outlet property="tableView" destination="QsR-RF-8pl" id="wga-bw-FYr"/>
                     </connections>
                 </viewController>
@@ -423,7 +420,7 @@
                         <menuItem title="북마크 지정" id="YnA-8d-FJX">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="onBookmarked:" target="XfG-lQ-9wD" id="TMO-sx-5mW"/>
+                                <action selector="onNoticeBookmarked:" target="XfG-lQ-9wD" id="kZb-sZ-AT8"/>
                             </connections>
                         </menuItem>
                     </items>
@@ -455,7 +452,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="onBack:" target="OZT-LM-eaz" id="cfx-iA-AOu"/>
+                                                    <action selector="onBackButtonClicked:" target="OZT-LM-eaz" id="UX5-hW-dNu"/>
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rHJ-uA-Sf6">
@@ -483,7 +480,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="onDeleteClicked:" target="OZT-LM-eaz" id="a3F-ZJ-GDd"/>
+                                            <action selector="onDeleteButtonClicked:" target="OZT-LM-eaz" id="MRS-cg-fL5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -591,9 +588,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerStackView" destination="Hvd-Fp-ahG" id="GGB-F8-ceZ"/>
                         <outlet property="noBookmarkedLabel" destination="rDS-nN-Crt" id="CTq-fZ-cik"/>
-                        <outlet property="scrollView" destination="QOh-9n-tPo" id="aw2-hR-yot"/>
                         <outlet property="tableView" destination="41H-By-NcI" id="5Fx-HH-vAR"/>
                     </connections>
                 </viewController>
@@ -603,7 +598,7 @@
                         <menuItem title="북마크 해제" id="fMk-Rm-rEO">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="onBookmarked:" target="OZT-LM-eaz" id="aah-mC-pKh"/>
+                                <action selector="onNoticeUnBookmarked:" target="OZT-LM-eaz" id="yFj-Wc-mK1"/>
                             </connections>
                         </menuItem>
                     </items>

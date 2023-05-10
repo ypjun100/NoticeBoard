@@ -2,30 +2,54 @@ import Cocoa
 
 class BookmarkViewController: NSViewController {
     
-    @IBOutlet var tableView: NSTableView!
-    @IBOutlet var noBookmarkedLabel: NSTextField!
+    @IBOutlet var tableView: NSTableView! // 테이블 뷰
+    @IBOutlet var noBookmarkedLabel: NSTextField! // 테이블 요소가 없을 경우 나타날 알림 텍스트뷰
     
-    var notices: [Notice] = [] // 게시글
-    let bookmarkedNoticeManager = BookmarkedNoticeManager()
+    let bookmarkedNoticeManager = BookmarkedNoticeManager() // 북마크 매니저
+    
+    var notices: [Notice] = [] // 게시글이 저장될 배열
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onBookmarkedNoticesChanged), name: Notification.Name(rawValue: "bookmarkedNoticesChanged"), object: nil)
+        // 북마크 게시글 데이터가 변경될 시 실행
+        NotificationCenter.default.addObserver(self, selector: #selector(onBookmarkedNoticesDataChanged), name: Notification.Name(rawValue: "bookmarkedNoticesDataChanged"), object: nil)
+        
+        tableView.action = #selector(onTableItemClicked)
         
         updateBookmark()
+    }
+    
+    // 북마크 매니저에서 북마크 한 게시글 데이터를 가져옴
+    func updateBookmark() {
+        self.notices = self.bookmarkedNoticeManager.getNotices()
+        self.tableView.reloadData()
         
-        tableView.action = #selector(onItemClicked)
+        noBookmarkedLabel.isHidden = self.notices.count == 0 ? false : true
+    }
+    
+    // 북마크 한 게시글 데이터가 변결될 때 실행
+    @objc func onBookmarkedNoticesDataChanged(_ notification: NSNotification) {
+        self.bookmarkedNoticeManager.updateData()
+        self.tableView.reloadData()
+    }
+    
+    // 테이블 행 클릭
+    @objc func onTableItemClicked() {
+        NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!)
     }
     
     
-    @IBAction func onBack(_ sender: Any) {
-        if let controller = self.storyboard?.instantiateController(withIdentifier: "main") as? ViewController {
+    // 뒤로가기 버튼 클릭
+    @IBAction func onBackButtonClicked(_ sender: Any) {
+        if let controller = self.storyboard?.instantiateController(withIdentifier: "main") as? MainController {
             self.view.window?.contentViewController = controller
         }
     }
     
-    @IBAction func onDeleteClicked(_ sender: Any) {
+    // 모든 북마크 데이터 삭제 버튼 클릭
+    @IBAction func onDeleteButtonClicked(_ sender: Any) {
         let alert = NSAlert()
         
         alert.messageText = "모든 북마크 해제"
@@ -34,52 +58,16 @@ class BookmarkViewController: NSViewController {
         alert.addButton(withTitle: "취소")
         
         alert.beginSheetModal(for: self.view.window!) { (response) in
-            if response.rawValue == 1000 {
+            if response.rawValue == 1000 { // 확인 버튼 클릭 시
                 self.bookmarkedNoticeManager.removeAll()
                 self.updateBookmark()
             }
         }
     }
     
-    @objc func onItemClicked() {
-        NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!)
-    }
-    
-    @IBAction func onBookmarked(_ sender: Any) {
+    // 북마크 게시글 해제
+    @IBAction func onNoticeUnBookmarked(_ sender: Any) {
         self.bookmarkedNoticeManager.remove(noticeId: notices[tableView.clickedRow].id)
         updateBookmark()
-    }
-    
-    func updateBookmark() {
-        self.notices = self.bookmarkedNoticeManager.getNotices()
-        self.tableView.reloadData()
-        
-        noBookmarkedLabel.isHidden = self.notices.count == 0 ? false : true
-    }
-    
-    @objc func onBookmarkedNoticesChanged(_ notification: NSNotification) {
-        self.bookmarkedNoticeManager.updateData()
-        self.tableView.reloadData()
-    }
-}
-
-extension BookmarkViewController: NSTableViewDataSource, NSTableViewDelegate {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return bookmarkedNoticeManager.getNotices().count
-    }
-
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let notice = notices[row]
-        
-        guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NoticeTableCell else { return nil }
-        
-        cell.noticeText.stringValue = notice.title
-        cell.noticeText.textColor = .textColor
-        
-        return cell
-    }
-    
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        tableView.deselectRow(tableView.selectedRow) // 클릭 후 포커스가 유지되는 현상 방지
     }
 }

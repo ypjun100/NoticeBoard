@@ -11,7 +11,7 @@
 		8425CC402A033D5200F660A7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425CC3F2A033D5200F660A7 /* SettingsController.swift */; };
 		8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */; };
 		845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */; };
-		845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* ViewController.swift */; };
+		845E8F8129F37CA9007A4B80 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* MainController.swift */; };
 		845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8229F37CAB007A4B80 /* Assets.xcassets */; };
 		845E8F8629F37CAB007A4B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8429F37CAB007A4B80 /* Main.storyboard */; };
 		84A12B3E29F9185500180223 /* BoardUrl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A12B3D29F9185500180223 /* BoardUrl.plist */; };
@@ -21,6 +21,10 @@
 		84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3D29F3D52F009CFF4F /* Notice.swift */; };
 		84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D4229F40676009CFF4F /* NoticeTableCell.swift */; };
 		84C1B9D12A00D31C00D8A529 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84C1B9D32A00D31C00D8A529 /* InfoPlist.strings */; };
+		84D492782A08A3A1005BFFE5 /* Main+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D492772A08A3A1005BFFE5 /* Main+NSTableView.swift */; };
+		84D4927A2A08A3DD005BFFE5 /* Main+NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D492792A08A3DD005BFFE5 /* Main+NSTextField.swift */; };
+		84D4927C2A08A3F4005BFFE5 /* Main+NSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4927B2A08A3F4005BFFE5 /* Main+NSMenu.swift */; };
+		84D4927E2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4927D2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift */; };
 		84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +34,7 @@
 		8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedNoticeManager.swift; sourceTree = "<group>"; };
 		845E8F7B29F37CA9007A4B80 /* NoticeBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoticeBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		845E8F8029F37CA9007A4B80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		845E8F8029F37CA9007A4B80 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		845E8F8229F37CAB007A4B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		845E8F8529F37CAB007A4B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		845E8F8729F37CAB007A4B80 /* NoticeBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoticeBoard.entitlements; sourceTree = "<group>"; };
@@ -40,6 +44,10 @@
 		84C17D4229F40676009CFF4F /* NoticeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
 		84C1B9C92A00D1BD00D8A529 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		84C1B9D22A00D31C00D8A529 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84D492772A08A3A1005BFFE5 /* Main+NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+NSTableView.swift"; sourceTree = "<group>"; };
+		84D492792A08A3DD005BFFE5 /* Main+NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+NSTextField.swift"; sourceTree = "<group>"; };
+		84D4927B2A08A3F4005BFFE5 /* Main+NSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+NSMenu.swift"; sourceTree = "<group>"; };
+		84D4927D2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmark+NSTableView.swift"; sourceTree = "<group>"; };
 		84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedNoticeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				840B1B0B29FFEC42006643BF /* BookmarkController.swift */,
+				84D4927D2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -142,7 +151,10 @@
 		84C17D3729F3D3AF009CFF4F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				845E8F8029F37CA9007A4B80 /* ViewController.swift */,
+				845E8F8029F37CA9007A4B80 /* MainController.swift */,
+				84D492772A08A3A1005BFFE5 /* Main+NSTableView.swift */,
+				84D492792A08A3DD005BFFE5 /* Main+NSTextField.swift */,
+				84D4927B2A08A3F4005BFFE5 /* Main+NSMenu.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -263,13 +275,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8425CC402A033D5200F660A7 /* SettingsController.swift in Sources */,
+				84D4927E2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift in Sources */,
 				84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */,
+				84D4927C2A08A3F4005BFFE5 /* Main+NSMenu.swift in Sources */,
 				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
 				840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */,
+				84D4927A2A08A3DD005BFFE5 /* Main+NSTextField.swift in Sources */,
 				84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */,
 				84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */,
 				8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */,
-				845E8F8129F37CA9007A4B80 /* ViewController.swift in Sources */,
+				84D492782A08A3A1005BFFE5 /* Main+NSTableView.swift in Sources */,
+				845E8F8129F37CA9007A4B80 /* MainController.swift in Sources */,
 				845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
