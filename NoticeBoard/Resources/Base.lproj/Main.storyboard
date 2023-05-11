@@ -29,7 +29,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="종료" alternate="YES" keyEquivalent="ㅈ" id="4sb-4s-VLi">
+                                        <menuItem title="종료" alternate="YES" keyEquivalent="w" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
