@@ -24,13 +24,13 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
         
         cell.noticeType.stringValue = notice.type == 0 ? "공지" : "일반"
         cell.noticeType.textColor = notice.type == 0 ? NSColor(red: 0.8, green: 0.15, blue: 0, alpha: 1.0) : NSColor.textColor
-        cell.noticeText.stringValue = notice.title
-        cell.noticeText.textColor = .textColor
+        cell.noticeTitle.stringValue = notice.title
+        cell.noticeTitle.textColor = .textColor
         
         // 만약 방문한 게시글 매니저에서 현재 게시판 ID가 포함되어 있는지 확인
         if(visitedNoticeManagers[currentBoardSelectionIndex].contains(noticeId: notice.id)) {
             cell.noticeType.textColor = .gray
-            cell.noticeText.textColor = .gray
+            cell.noticeTitle.textColor = .gray
         }
         
         return cell

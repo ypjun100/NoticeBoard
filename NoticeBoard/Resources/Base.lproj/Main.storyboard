@@ -29,7 +29,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="종료" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="종료" alternate="YES" keyEquivalent="ㅈ" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -336,7 +336,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="haX-pJ-HQA" userLabel="Notice Text">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="haX-pJ-HQA" userLabel="Notice Title">
                                                                     <rect key="frame" x="31" y="12" width="397" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="게시글 이름" id="oe2-Dh-cHM">
                                                                         <font key="font" metaFont="system"/>
@@ -353,9 +353,8 @@
                                                                 <constraint firstItem="gYi-Op-sSx" firstAttribute="leading" secondItem="Rrn-LV-EcP" secondAttribute="leading" id="lMf-Xt-rFC"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="noticeText" destination="haX-pJ-HQA" id="ZgY-Sl-AUp"/>
+                                                                <outlet property="noticeTitle" destination="haX-pJ-HQA" id="0FX-UD-dVm"/>
                                                                 <outlet property="noticeType" destination="gYi-Op-sSx" id="dbZ-q4-e1J"/>
-                                                                <outlet property="noticeTypeText" destination="gYi-Op-sSx" id="bKR-pi-DcM"/>
                                                                 <outlet property="textField" destination="haX-pJ-HQA" id="4mY-q8-A7I"/>
                                                             </connections>
                                                         </tableCellView>

@@ -44,8 +44,12 @@ class MainController: NSViewController {
             }
         }
         
-        updateBoardData()
         initTableView()
+    }
+    
+    override func viewWillAppear() {
+        // 뷰가 생성되고 난 뒤 게시글을 가져옴
+        updateBoardData()
     }
     
     
@@ -60,7 +64,7 @@ class MainController: NSViewController {
     // 게시판 데이터 가져오기
     func updateBoardData() {
         progressIndicator.startAnimation(self)
-        BoardParser.parse(url: boardUrls[currentBoardSelectionIndex][1], searchKeyword: currentSearchKeyword, pageIndex: boardPageIndex) { notices in
+        BoardParser.parseBoardNotices(url: boardUrls[currentBoardSelectionIndex][1], searchKeyword: currentSearchKeyword, pageIndex: boardPageIndex, window: self.view.window!) { notices in
             self.notices.append(contentsOf: notices)
             self.tableView.reloadData()
             self.progressIndicator.stopAnimation(self)
@@ -73,15 +77,6 @@ class MainController: NSViewController {
         self.notices = []
         self.tableView.reloadData()
     }
-    
-    // 경고창 생성
-    func showAlert(message: String) {
-        let alert = NSAlert()
-        alert.alertStyle = .critical
-        alert.messageText = message
-        alert.beginSheetModal(for: self.view.window!)
-    }
-    
     
     
     // 게시판 메뉴 아이템 변경
@@ -121,7 +116,7 @@ class MainController: NSViewController {
     // 특정 게시글 북마킹
     @IBAction func onNoticeBookmarked(_ sender: NSMenuItem) {
         if (notices[tableView.clickedRow].id == -1) {
-            showAlert(message: "공지사항은 북마크할 수 없습니다.")
+            NSAlert.showAlert(window: self.view.window!, message: "공지사항은 북마크할 수 없습니다.")
             return
         }
         if (sender.title == "북마크 지정") {

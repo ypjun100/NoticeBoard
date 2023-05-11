@@ -1,11 +1,20 @@
+import Cocoa
 import Alamofire
 import SwiftSoup
 
-let NOTICES_PER_PAGE = 10
+let NOTICES_PER_PAGE = 10 // 게시판의 게시글 개수
 
 class BoardParser {
-    static func parse(url: String, searchKeyword: String, pageIndex: Int, callback: @escaping((_ notices: [Notice]) -> Void)) {
-        guard let encodedSearchKeyword = searchKeyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+    /**
+     공지사항의 게시글들에 대한 정보를 가져옵니다.
+     - Parameter url: 게시판 URL
+     - Parameter searchKeyword: 해당 게시판에서 검색할 키워드
+     - Parameter pageIndex: 현재 게시판의 페이징 인덱스
+     - Parameter window: 파싱을 진행할 뷰의 window (Alert를 표시할 때 필요)
+     - Parameter completion: 파싱을 수행한 후 실행될 함수
+     */
+    static func parseBoardNotices(url: String, searchKeyword: String, pageIndex: Int, window: NSWindow, completion: @escaping((_ notices: [Notice]) -> Void)) {
+        guard let encodedSearchKeyword = searchKeyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return } // 검색 키워드를 url 인코딩
         
         AF.request(url +
                    "?search%3Asearch_key%3Asearch=article_title&search%3Asearch_val%3Asearch=" + encodedSearchKeyword + // 검색 키워드
@@ -15,9 +24,9 @@ class BoardParser {
             
             do {
                 let document: Document = try SwiftSoup.parse(html)
-                let elements: Elements = try document.select("tbody > tr")
+                let elements: Elements = try document.select("tbody > tr") // 게시글 노드 배열
                 
-                var notices: [Notice] = []
+                var notices: [Notice] = [] // 게시글 배열
                 
                 for element in elements {
                     let noticeId = try element.select(".seq").text()
@@ -34,9 +43,9 @@ class BoardParser {
                                           title: try title.text(),
                                           url: url + String(try element.select(".subject > a").attr("href"))))
                 }
-                callback(notices)
+                completion(notices)
             } catch {
-                print(error)
+                NSAlert.showAlert(window: window, message: "공지사항 글을 가져올 수 없습니다.")
             }
         }
     }

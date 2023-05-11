@@ -19,48 +19,23 @@ class SettingsController: NSViewController {
     }
     
     
-    // yes or no alert 표시
-    func showQuestionAlert(message: String, text: String, completion: @escaping () -> Void) {
-        let alert = NSAlert()
-        
-        alert.messageText = message
-        alert.informativeText = text
-        alert.addButton(withTitle: "확인")
-        alert.addButton(withTitle: "취소")
-        
-        alert.beginSheetModal(for: self.view.window!) { (response) in
-            if response.rawValue == 1000 { // 확인 버튼을 누를 시 실행
-                completion()
-            }
-        }
-    }
-    
-    // alert 표시
-    func showAlert(message: String) {
-        let alert = NSAlert()
-        alert.messageText = message
-        alert.beginSheetModal(for: self.view.window!)
-    }
-    
-    
     // 모든 방문 게시글 삭제
     @IBAction func onDeleteVisitedNoticesClicked(_ sender: NSButton) {
-        showQuestionAlert(message: "모든 방문 게시글 삭제", text: "방문한 모든 게시글 데이터를 삭제하시겠습니까?") {
+        NSAlert.showQuestionAlert(window: self.view.window!, message: "모든 방문 게시글 삭제", text: "방문한 모든 게시글 데이터를 삭제하시겠습니까?") {
             for visitedNoticeManager in self.visitedNoticeManagers {
                 visitedNoticeManager.removeAll()
             }
             NotificationCenter.default.post(name: Notification.Name("visitedNoticesDataChanged"), object: nil)
-            self.showAlert(message: "방문한 모든 게시글을 삭제하였습니다.")
+            NSAlert.showAlert(window: self.view.window!, message: "방문한 모든 게시글을 삭제하였습니다.")
         }
     }
     
     // 모든 북마크 게시글 삭제
     @IBAction func onDeleteBookmarkedNoticesClicked(_ sender: NSButton) {
-        showQuestionAlert(message: "모든 북마크 게시글 삭제", text: "모든 북마크 게시글 데이터를 삭제하시겠습니까?") {
+        NSAlert.showQuestionAlert(window: self.view.window!, message: "모든 북마크 게시글 삭제", text: "모든 북마크 게시글 데이터를 삭제하시겠습니까?") {
             self.bookmarkedNoticeManager.removeAll()
             NotificationCenter.default.post(name: Notification.Name("bookmarkedNoticesDataChanged"), object: nil)
-            self.showAlert(message: "모든 북마크 게시글을 삭제하였습니다.")
+            NSAlert.showAlert(window: self.view.window!, message: "모든 북마크 게시글을 삭제하였습니다.")
         }
-        
     }
 }

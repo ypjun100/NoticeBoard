@@ -14,8 +14,8 @@ extension BookmarkViewController: NSTableViewDataSource, NSTableViewDelegate {
         
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NoticeTableCell else { return nil }
         
-        cell.noticeText.stringValue = notice.title
-        cell.noticeText.textColor = .textColor
+        cell.noticeTitle.stringValue = notice.title
+        cell.noticeTitle.textColor = .textColor
         
         return cell
     }

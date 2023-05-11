@@ -50,18 +50,10 @@ class BookmarkViewController: NSViewController {
     
     // 모든 북마크 데이터 삭제 버튼 클릭
     @IBAction func onDeleteButtonClicked(_ sender: Any) {
-        let alert = NSAlert()
-        
-        alert.messageText = "모든 북마크 해제"
-        alert.informativeText = "모든 북마크를 해제하시겠습니까?"
-        alert.addButton(withTitle: "확인")
-        alert.addButton(withTitle: "취소")
-        
-        alert.beginSheetModal(for: self.view.window!) { (response) in
-            if response.rawValue == 1000 { // 확인 버튼 클릭 시
-                self.bookmarkedNoticeManager.removeAll()
-                self.updateBookmark()
-            }
+        NSAlert.showQuestionAlert(window: self.view.window!, message: "모든 북마크 해제", text: "모든 북마크를 해제하시겠습니까?") {
+            self.bookmarkedNoticeManager.removeAll()
+            self.updateBookmark()
+            NSAlert.showAlert(window: self.view.window!, message: "모든 북마크 게시글을 삭제하였습니다.")
         }
     }
     

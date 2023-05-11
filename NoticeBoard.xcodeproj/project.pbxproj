@@ -10,6 +10,7 @@
 		840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B0B29FFEC42006643BF /* BookmarkController.swift */; };
 		8425CC402A033D5200F660A7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425CC3F2A033D5200F660A7 /* SettingsController.swift */; };
 		8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */; };
+		842FD0052A0B428300C7F35D /* NSAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FD0042A0B428300C7F35D /* NSAlert+Extension.swift */; };
 		845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */; };
 		845E8F8129F37CA9007A4B80 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* MainController.swift */; };
 		845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8229F37CAB007A4B80 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		840B1B0B29FFEC42006643BF /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		8425CC3F2A033D5200F660A7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedNoticeManager.swift; sourceTree = "<group>"; };
+		842FD0042A0B428300C7F35D /* NSAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Extension.swift"; sourceTree = "<group>"; };
 		845E8F7B29F37CA9007A4B80 /* NoticeBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoticeBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845E8F7E29F37CA9007A4B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		845E8F8029F37CA9007A4B80 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -81,17 +83,10 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		8429F10F29F7C95B00872089 /* Xib */ = {
-			isa = PBXGroup;
-			children = (
-				84C17D4229F40676009CFF4F /* NoticeTableCell.swift */,
-			);
-			path = Xib;
-			sourceTree = "<group>";
-		};
 		8429F11429F7C9B900872089 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				84C17D3A29F3D451009CFF4F /* BoardParser.swift */,
 				8429F11529F7C9DB00872089 /* VisitedNoticeManager.swift */,
 				84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */,
 			);
@@ -119,11 +114,10 @@
 			children = (
 				8429F11429F7C9B900872089 /* Utils */,
 				84C17D4129F403D4009CFF4F /* Custom Controls */,
-				84C17D3629F3D38D009CFF4F /* Supporting Files */,
-				84C17D3C29F3D472009CFF4F /* Model */,
-				84C17D3929F3D42F009CFF4F /* Networking */,
+				84C17D3C29F3D472009CFF4F /* Models */,
 				84C17D3529F3D381009CFF4F /* Controllers */,
 				84C17D3829F3D3D1009CFF4F /* Resources */,
+				84C17D3629F3D38D009CFF4F /* Supporting Files */,
 			);
 			path = NoticeBoard;
 			sourceTree = "<group>";
@@ -169,26 +163,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		84C17D3929F3D42F009CFF4F /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				84C17D3A29F3D451009CFF4F /* BoardParser.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		84C17D3C29F3D472009CFF4F /* Model */ = {
+		84C17D3C29F3D472009CFF4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				84C17D3D29F3D52F009CFF4F /* Notice.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		84C17D4129F403D4009CFF4F /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
-				8429F10F29F7C95B00872089 /* Xib */,
+				84C17D4229F40676009CFF4F /* NoticeTableCell.swift */,
+				842FD0042A0B428300C7F35D /* NSAlert+Extension.swift */,
 			);
 			path = "Custom Controls";
 			sourceTree = "<group>";
@@ -279,6 +266,7 @@
 				84C17D4329F40676009CFF4F /* NoticeTableCell.swift in Sources */,
 				84D4927C2A08A3F4005BFFE5 /* Main+NSMenu.swift in Sources */,
 				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
+				842FD0052A0B428300C7F35D /* NSAlert+Extension.swift in Sources */,
 				840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */,
 				84D4927A2A08A3DD005BFFE5 /* Main+NSTextField.swift in Sources */,
 				84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */,
