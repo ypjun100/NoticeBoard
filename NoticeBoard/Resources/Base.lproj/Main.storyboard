@@ -37,6 +37,18 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="파일" id="Tla-B6-tZw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="파일" id="uXG-Tc-7zr">
+                                    <items>
+                                        <menuItem title="닫기" keyEquivalent="w" id="eRb-4s-8PG">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="Cnn-ay-0Bw"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
