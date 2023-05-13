@@ -537,7 +537,7 @@
                                                             <rect key="frame" x="10" y="2" width="426" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9z2-0u-cFh" userLabel="Notice Text">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9z2-0u-cFh" userLabel="Notice Title">
                                                                     <rect key="frame" x="-2" y="12" width="430" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="게시글 이름" id="RXX-SD-1KD">
                                                                         <font key="font" metaFont="system"/>
@@ -552,7 +552,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="9z2-0u-cFh" secondAttribute="trailing" id="o59-OV-XhL"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="noticeText" destination="9z2-0u-cFh" id="otb-hb-e9U"/>
+                                                                <outlet property="noticeTitle" destination="9z2-0u-cFh" id="xN1-YG-zCV"/>
                                                                 <outlet property="textField" destination="9z2-0u-cFh" id="bPL-bp-JPu"/>
                                                             </connections>
                                                         </tableCellView>

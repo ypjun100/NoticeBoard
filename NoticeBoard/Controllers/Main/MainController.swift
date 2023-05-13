@@ -47,7 +47,7 @@ class MainController: NSViewController {
         initTableView()
     }
     
-    override func viewWillAppear() {
+    override func viewDidAppear() {
         // 뷰가 생성되고 난 뒤 게시글을 가져옴
         updateBoardData()
     }
