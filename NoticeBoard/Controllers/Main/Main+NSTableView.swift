@@ -44,9 +44,11 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
     
     // 게시글 행 클릭 시
     @objc func onTableItemClicked() {
-        visitedNoticeManagers[currentBoardSelectionIndex].addNotice(noticeId: notices[tableView.clickedRow].id)
-        NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!) // url로 브라우저 오픈
-        tableView.reloadData(forRowIndexes: IndexSet(arrayLiteral: tableView.clickedRow), columnIndexes: IndexSet(integer: 0))
+        if (tableView.clickedRow != -1) { // 선택한 행이 있는 경우에만 실행
+            visitedNoticeManagers[currentBoardSelectionIndex].addNotice(noticeId: notices[tableView.clickedRow].id)
+            NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!) // url로 브라우저 오픈
+            tableView.reloadData(forRowIndexes: IndexSet(arrayLiteral: tableView.clickedRow), columnIndexes: IndexSet(integer: 0))
+        }
     }
     
     // 사용자 스크롤 종료 시

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -207,24 +207,24 @@
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yz-oS-RO9">
                                         <rect key="frame" x="378" y="8" width="48" height="9"/>
                                         <subviews>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="RVK-mA-qwh">
-                                                <rect key="frame" x="0.0" y="-3" width="18" height="16"/>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="star.square.on.square" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="5Rq-uo-dvr">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="onBookmarkButtonClicked:" target="XfG-lQ-9wD" id="ZvJ-8o-ygM"/>
-                                                </connections>
-                                            </button>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-dM-nz3">
-                                                <rect key="frame" x="33" y="-3" width="15" height="15"/>
+                                                <rect key="frame" x="0.0" y="-3" width="15" height="15"/>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="magnifyingglass" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="uGV-0D-y44">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="onSearchButtonClicked:" target="XfG-lQ-9wD" id="Sh6-Hb-aFE"/>
+                                                </connections>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="RVK-mA-qwh">
+                                                <rect key="frame" x="30" y="-3" width="18" height="16"/>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="star.square.on.square" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="5Rq-uo-dvr">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="onBookmarkButtonClicked:" target="XfG-lQ-9wD" id="ZvJ-8o-ygM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -418,6 +418,7 @@
                         <outlet property="boardSelectionMenu" destination="YaS-SE-lQn" id="3kx-F9-nYC"/>
                         <outlet property="boardSelectionView" destination="YcQ-zW-MyH" id="kSz-N8-bvI"/>
                         <outlet property="headerStackView" destination="cOi-Bs-9Ha" id="EPr-O7-U9d"/>
+                        <outlet property="headerTitleTextView" destination="rEj-3c-1ej" id="5w3-Gu-MwL"/>
                         <outlet property="progressIndicator" destination="FoU-uy-h9Y" id="NDZ-0C-FJ8"/>
                         <outlet property="scrollView" destination="bWW-P7-zp2" id="H2a-1h-6WW"/>
                         <outlet property="searchField" destination="PQb-4X-ThL" id="pDj-we-Q9n"/>
