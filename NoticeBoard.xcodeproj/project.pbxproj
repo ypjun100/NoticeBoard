@@ -26,6 +26,7 @@
 		84D4927A2A08A3DD005BFFE5 /* Main+NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D492792A08A3DD005BFFE5 /* Main+NSTextField.swift */; };
 		84D4927C2A08A3F4005BFFE5 /* Main+NSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4927B2A08A3F4005BFFE5 /* Main+NSMenu.swift */; };
 		84D4927E2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4927D2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift */; };
+		84FC3E2C2A305A2D00B4EDA8 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC3E2B2A305A2D00B4EDA8 /* NSColor+Extension.swift */; };
 		84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		84D492792A08A3DD005BFFE5 /* Main+NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+NSTextField.swift"; sourceTree = "<group>"; };
 		84D4927B2A08A3F4005BFFE5 /* Main+NSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+NSMenu.swift"; sourceTree = "<group>"; };
 		84D4927D2A08EC1F005BFFE5 /* Bookmark+NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmark+NSTableView.swift"; sourceTree = "<group>"; };
+		84FC3E2B2A305A2D00B4EDA8 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedNoticeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 		845E8F7D29F37CA9007A4B80 /* NoticeBoard */ = {
 			isa = PBXGroup;
 			children = (
+				84FC3E2A2A305A1D00B4EDA8 /* Extensions */,
 				8429F11429F7C9B900872089 /* Utils */,
 				84C17D4129F403D4009CFF4F /* Custom Controls */,
 				84C17D3C29F3D472009CFF4F /* Models */,
@@ -180,6 +183,14 @@
 			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
+		84FC3E2A2A305A1D00B4EDA8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84FC3E2B2A305A2D00B4EDA8 /* NSColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,7 +223,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					845E8F7A29F37CA9007A4B80 = {
 						CreatedOnToolsVersion = 14.2;
@@ -273,6 +284,7 @@
 				84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */,
 				8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */,
 				84D492782A08A3A1005BFFE5 /* Main+NSTableView.swift in Sources */,
+				84FC3E2C2A305A2D00B4EDA8 /* NSColor+Extension.swift in Sources */,
 				845E8F8129F37CA9007A4B80 /* MainController.swift in Sources */,
 				845E8F7F29F37CA9007A4B80 /* AppDelegate.swift in Sources */,
 			);
@@ -335,6 +347,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -397,6 +410,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -426,7 +440,8 @@
 				CODE_SIGN_ENTITLEMENTS = "NoticeBoard/Supporting Files/NoticeBoard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -439,7 +454,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junyoung.NoticeBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -455,7 +470,8 @@
 				CODE_SIGN_ENTITLEMENTS = "NoticeBoard/Supporting Files/NoticeBoard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -468,7 +484,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junyoung.NoticeBoard;
 				PRODUCT_NAME = NoticeBoard;
 				SWIFT_EMIT_LOC_STRINGS = YES;

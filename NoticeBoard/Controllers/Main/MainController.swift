@@ -31,7 +31,7 @@ class MainController: NSViewController {
         // Board Select View UI 수정
         boardSelectionView.wantsLayer = true
         boardSelectionView.layer?.cornerRadius = 5.0
-        boardSelectionView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+        boardSelectionView.layer?.backgroundColor = NSColor.boardSelectBackground?.cgColor
         
         // 게시판 리스트 가져오기
         if let URL = Bundle.main.url(forResource: "BoardUrl", withExtension: "plist") {  // BoardUrl.plist를 가져옴

@@ -197,9 +197,9 @@
                                 <rect key="frame" x="20" y="564" width="426" height="24"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rEj-3c-1ej">
-                                        <rect key="frame" x="-2" y="0.0" width="108" height="24"/>
+                                        <rect key="frame" x="-2" y="1" width="103" height="23"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="순천향대학교" id="ew2-F2-8sw">
-                                            <font key="font" size="20" name="AppleSDGothicNeo-Bold"/>
+                                            <font key="font" size="19" name="AppleSDGothicNeo-Bold"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
