@@ -27,6 +27,10 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
         cell.noticeTitle.stringValue = notice.title
         cell.noticeTitle.textColor = .textColor
         
+        // tooltip
+        cell.noticeType.toolTip = "작성날짜 : " + notice.date
+        cell.noticeTitle.toolTip = "작성날짜 : " + notice.date
+        
         // 만약 방문한 게시글 매니저에서 현재 게시판 ID가 포함되어 있는지 확인
         if(visitedNoticeManagers[currentBoardSelectionIndex].contains(noticeId: notice.id)) {
             cell.noticeType.textColor = .gray

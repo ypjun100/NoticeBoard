@@ -30,7 +30,7 @@ class BookmarkedNoticeManager {
     
     // 북마크 한 게시글 데이터를 불러옴
     func getNotices() -> [Notice] {
-        return bookmarkedNotices
+        return bookmarkedNotices.reversed() // 최신 북마크 게시글을 가장 위에 표시하기 위해 reversed 진행
     }
     
     // 북마크한 게시글 추가

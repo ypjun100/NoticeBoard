@@ -12,5 +12,6 @@ struct Notice: Codable {
     var id: Int
     var type: Int
     var title: String
+    var date: String
     var url: String
 }

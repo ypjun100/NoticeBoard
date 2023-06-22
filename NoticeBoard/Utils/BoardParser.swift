@@ -38,9 +38,12 @@ class BoardParser {
                     let title = try element.select(".subject > a")
                     try title.select("span").remove() // a 태그 내의 span 태그 삭제
                     
+                    let date = try element.select(".date").text().components(separatedBy: " ")[1]
+                    
                     notices.append(Notice(id: noticeId == "공지" ? -1 : Int(noticeId)!,
                                           type: noticeId == "공지" ? 0 : 1,
                                           title: try title.text(),
+                                          date: date,
                                           url: url + String(try element.select(".subject > a").attr("href"))))
                 }
                 completion(notices)
