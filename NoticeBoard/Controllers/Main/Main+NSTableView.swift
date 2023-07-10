@@ -1,6 +1,7 @@
 import Cocoa
 
 extension MainController: NSTableViewDataSource, NSTableViewDelegate {
+    
     // 테이블뷰 초기화
     func initTableView() {
         tableView.action = #selector(onTableItemClicked) // 테이블 요소 선택시 액션
@@ -12,12 +13,24 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
     // NSTableViewDataSource::
     // 테이블의 행의 수
     func numberOfRows(in tableView: NSTableView) -> Int {
+        // 검색결과가 없는 경우 'Nothing To Show Cell'을 보여주기 위해 1을 반환
+        if currentSearchKeyword != "" && notices.count == 0 {
+            isTableViewEmpty = true
+            return 1
+        }
         return (notices.count)
     }
 
     // NSTableViewDelegate::
     // 테이블의 각 행 데이터 정의
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        // 테이블이 비어있는 경우
+        if isTableViewEmpty {
+            guard let cell = tableView.makeView(withIdentifier: .init("NothingToShowCell"), owner: self) as? NSTableCellView else { return nil }
+            isTableViewEmpty = false
+            return cell
+        }
+        
         let notice = notices[row]
         
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NoticeTableCell else { return nil }
@@ -40,6 +53,7 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
         return cell
     }
     
+    
     // NSTableViewDelegate::
     // 테이블에서 선택한 행이 바뀔 시
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -48,7 +62,7 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
     
     // 게시글 행 클릭 시
     @objc func onTableItemClicked() {
-        if (tableView.clickedRow != -1) { // 선택한 행이 있는 경우에만 실행
+        if (notices.count != 0 && tableView.clickedRow != -1) { // 선택한 행이 있는 경우에만 실행
             visitedNoticeManagers[currentBoardSelectionIndex].addNotice(noticeId: notices[tableView.clickedRow].id)
             NSWorkspace.shared.open(URL(string: notices[tableView.clickedRow].url)!) // url로 브라우저 오픈
             tableView.reloadData(forRowIndexes: IndexSet(arrayLiteral: tableView.clickedRow), columnIndexes: IndexSet(integer: 0))
@@ -58,7 +72,8 @@ extension MainController: NSTableViewDataSource, NSTableViewDelegate {
     // 사용자 스크롤 종료 시
     @objc func onScrollDidEnd() {
         // 만약 현재 스크롤 위치가 스크롤 뷰의 맨 하단인 경우 새로운 게시글 페이지에서 게시글들을 불러옴
-        if(scrollView.contentView.bounds.origin.y + scrollView.contentView.bounds.height == scrollView.documentView?.bounds.height) {
+        if notices.count != 0 &&
+            scrollView.contentView.bounds.origin.y + scrollView.contentView.bounds.height == scrollView.documentView?.bounds.height {
             boardPageIndex += 1
             updateBoardData()
         }
