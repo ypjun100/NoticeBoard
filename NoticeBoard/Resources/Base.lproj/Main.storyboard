@@ -109,7 +109,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Vr-ul-fgu">
-                                        <rect key="frame" x="210" y="-7" width="57" height="32"/>
+                                        <rect key="frame" x="209" y="-7" width="58" height="32"/>
                                         <buttonCell key="cell" type="push" title="삭제" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lyT-oJ-wHC">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -148,7 +148,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DQK-qX-oHv">
-                                        <rect key="frame" x="210" y="-7" width="57" height="32"/>
+                                        <rect key="frame" x="209" y="-7" width="58" height="32"/>
                                         <buttonCell key="cell" type="push" title="삭제" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SMf-Dw-Vjk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -205,7 +205,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yz-oS-RO9">
-                                        <rect key="frame" x="378" y="8" width="48" height="9"/>
+                                        <rect key="frame" x="379" y="8" width="47" height="9"/>
                                         <subviews>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IsP-dM-nz3">
                                                 <rect key="frame" x="0.0" y="-2.5" width="16.5" height="15"/>
@@ -218,7 +218,7 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="RVK-mA-qwh">
-                                                <rect key="frame" x="31" y="-3" width="17.5" height="16"/>
+                                                <rect key="frame" x="31" y="-3" width="16.5" height="16"/>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="star.square.on.square" catalog="system" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="5Rq-uo-dvr">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -368,6 +368,28 @@
                                                                 <outlet property="noticeTitle" destination="haX-pJ-HQA" id="0FX-UD-dVm"/>
                                                                 <outlet property="noticeType" destination="gYi-Op-sSx" id="dbZ-q4-e1J"/>
                                                                 <outlet property="textField" destination="haX-pJ-HQA" id="4mY-q8-A7I"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="NothingToShowCell" id="JCU-N7-qSY" userLabel="Nothing To Show Cell">
+                                                            <rect key="frame" x="10" y="47" width="426" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="HUt-kg-FAi" userLabel="Nothing to Show">
+                                                                    <rect key="frame" x="144" y="12" width="139" height="16"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="항목이 존재하지 않습니다." id="o25-jp-TVu">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="HUt-kg-FAi" firstAttribute="centerY" secondItem="JCU-N7-qSY" secondAttribute="centerY" id="1qb-31-0ar"/>
+                                                                <constraint firstItem="HUt-kg-FAi" firstAttribute="centerX" secondItem="JCU-N7-qSY" secondAttribute="centerX" id="k3g-RL-cRP"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="noticeTitle" destination="HUt-kg-FAi" id="AYa-XN-x83"/>
+                                                                <outlet property="textField" destination="HUt-kg-FAi" id="q7q-gM-mQx"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -557,6 +579,28 @@
                                                                 <outlet property="textField" destination="9z2-0u-cFh" id="bPL-bp-JPu"/>
                                                             </connections>
                                                         </tableCellView>
+                                                        <tableCellView identifier="NothingToShowCell" id="xfH-0l-lZP" userLabel="Nothing To Show Cell">
+                                                            <rect key="frame" x="10" y="47" width="426" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="K4h-cD-sND" userLabel="Nothing to Show">
+                                                                    <rect key="frame" x="138" y="12" width="150" height="16"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="북마크한 게시글이 없습니다." id="V57-uF-YTx">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="K4h-cD-sND" firstAttribute="centerY" secondItem="xfH-0l-lZP" secondAttribute="centerY" id="Gsa-fV-pBU"/>
+                                                                <constraint firstItem="K4h-cD-sND" firstAttribute="centerX" secondItem="xfH-0l-lZP" secondAttribute="centerX" id="TgD-iI-HUo"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="noticeTitle" destination="K4h-cD-sND" id="WFT-Il-qfT"/>
+                                                                <outlet property="textField" destination="K4h-cD-sND" id="Pmh-Jf-dE6"/>
+                                                            </connections>
+                                                        </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
@@ -578,29 +622,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-nN-Crt">
-                                <rect key="frame" x="158" y="292" width="150" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="북마크한 게시글이 없습니다." id="J7Y-Y3-8mr">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="rDS-nN-Crt" firstAttribute="centerX" secondItem="9bP-0X-8Ha" secondAttribute="centerX" id="0Z7-Yr-w37"/>
                             <constraint firstItem="QOh-9n-tPo" firstAttribute="leading" secondItem="9bP-0X-8Ha" secondAttribute="leading" constant="10" id="FXR-VZ-X16"/>
                             <constraint firstItem="Hvd-Fp-ahG" firstAttribute="top" secondItem="9bP-0X-8Ha" secondAttribute="top" constant="15" id="M4z-kx-fH5"/>
                             <constraint firstAttribute="trailing" secondItem="Hvd-Fp-ahG" secondAttribute="trailing" constant="20" id="M6g-FU-fsD"/>
                             <constraint firstAttribute="trailing" secondItem="QOh-9n-tPo" secondAttribute="trailing" constant="10" id="SVp-UM-Iei"/>
                             <constraint firstItem="QOh-9n-tPo" firstAttribute="top" secondItem="Hvd-Fp-ahG" secondAttribute="bottom" constant="5" id="Stn-OJ-Naa"/>
                             <constraint firstItem="Hvd-Fp-ahG" firstAttribute="leading" secondItem="9bP-0X-8Ha" secondAttribute="leading" constant="20" id="fy0-cZ-daY"/>
-                            <constraint firstItem="rDS-nN-Crt" firstAttribute="centerY" secondItem="9bP-0X-8Ha" secondAttribute="centerY" id="gti-DA-hn2"/>
                             <constraint firstAttribute="bottom" secondItem="QOh-9n-tPo" secondAttribute="bottom" id="yLx-Ee-Xma"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="noBookmarkedLabel" destination="rDS-nN-Crt" id="CTq-fZ-cik"/>
                         <outlet property="tableView" destination="41H-By-NcI" id="5Fx-HH-vAR"/>
                     </connections>
                 </viewController>

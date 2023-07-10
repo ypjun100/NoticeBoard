@@ -15,11 +15,12 @@ class MainController: NSViewController {
     var visitedNoticeManagers: [VisitedNoticeManager] = [] // 각 게시판에 대한 게시글 방문여부 확인 매니저
     let bookmarkedNoticeManager = BookmarkedNoticeManager() // 북마크 지정/해제를 위한 매니저
     
-    var boardUrls: [[String]] = [] // BoardUrl.plist에서 가져온 url이 저장될 배열
+    var boardUrls: [String] = [] // BoardUrl.plist에서 가져온 url이 저장될 배열
     var notices: [Notice] = [] // 게시글
     var currentBoardSelectionIndex = 0 // 현재 게시판 인덱스가 저장될 변수
     var boardPageIndex = 0 // 게시판 페이지 인덱스
     var currentSearchKeyword = "" // 현재 검색 키워드
+    var isTableViewEmpty = false // 테이블뷰가 비어있는지
     
     
     override func viewDidLoad() {
@@ -34,22 +35,34 @@ class MainController: NSViewController {
         boardSelectionView.layer?.backgroundColor = NSColor.boardSelectBackground?.cgColor
         
         // 게시판 리스트 가져오기
-        if let URL = Bundle.main.url(forResource: "BoardUrl", withExtension: "plist") {  // BoardUrl.plist를 가져옴
-            if let data = NSArray(contentsOf: URL) as? [NSArray] { // 데이터 추출
-                for (i, elem) in data.enumerated() {
-                    boardUrls.append(elem as! Array<String>)
-                    boardSelectionMenu.addItem(withTitle: boardUrls[i][0], action: nil, keyEquivalent: "")
-                    visitedNoticeManagers.append(VisitedNoticeManager(boardName: boardUrls[i][0]))
-                }
-            }
-        }
+        getBoardList()
+//        if let URL = Bundle.main.url(forResource: "BoardUrl", withExtension: "plist") {  // BoardUrl.plist를 가져옴
+//            if let data = NSArray(contentsOf: URL) as? [NSArray] { // 데이터 추출
+//                for (i, elem) in data.enumerated() {
+//                    boardUrls.append(elem as! Array<String>)
+//                    boardSelectionMenu.addItem(withTitle: boardUrls[i][0], action: nil, keyEquivalent: "")
+//                    visitedNoticeManagers.append(VisitedNoticeManager(boardName: boardUrls[i][0]))
+//                }
+//            }
+//        }
         
+        // 테이블뷰 초기화
         initTableView()
     }
     
     override func viewDidAppear() {
         // 뷰가 생성되고 난 뒤 게시글을 가져옴
         updateBoardData()
+    }
+    
+    // 게시판 리스트를 가져옴
+    func getBoardList() {
+        let boards: [Board] = Board.getBoards()
+        boards.forEach { board in
+            boardUrls.append(board.url)
+            boardSelectionMenu.addItem(withTitle: board.name, action: nil, keyEquivalent: "")
+            visitedNoticeManagers.append(VisitedNoticeManager(boardName: board.name))
+        }
     }
     
     
@@ -64,7 +77,7 @@ class MainController: NSViewController {
     // 게시판 데이터 가져오기
     func updateBoardData() {
         progressIndicator.startAnimation(self)
-        BoardParser.parseBoardNotices(url: boardUrls[currentBoardSelectionIndex][1], searchKeyword: currentSearchKeyword, pageIndex: boardPageIndex, window: self.view.window!) { notices in
+        BoardParser.parseBoardNotices(url: boardUrls[currentBoardSelectionIndex], searchKeyword: currentSearchKeyword, pageIndex: boardPageIndex, window: self.view.window!) { notices in
             self.notices.append(contentsOf: notices)
             self.tableView.reloadData()
             self.progressIndicator.stopAnimation(self)
