@@ -18,9 +18,13 @@ extension NSAlert {
     }
     
     // alert 표시
-    static func showAlert(window: NSWindow, message: String) {
+    static func showAlert(window: NSWindow, message: String, completion: (() -> Void)? = nil) {
         let alert = NSAlert()
         alert.messageText = message
-        alert.beginSheetModal(for: window)
+        alert.beginSheetModal(for: window) { (response) in
+            if completion != nil {
+                completion!()
+            }
+        }
     }
 }

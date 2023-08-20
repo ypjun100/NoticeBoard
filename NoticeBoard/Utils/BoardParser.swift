@@ -51,4 +51,28 @@ class BoardParser {
             }
         }
     }
+    
+    /**
+     올바른 게시판인지 확인하여 불린형으로 반환합니다.
+     - Parameter url: 게시판 URL
+     */
+    static func checkBoardAvailablity(url: String, completion: @escaping(_ availablity: Bool, _ errorMessage: String) -> Void) {
+        AF.request(url).responseString { (response) in
+            guard let html = response.value else {
+                completion(false, "잘못된 URL 주소입니다.")
+                return
+            }
+            
+            do {
+                let document: Document = try SwiftSoup.parse(html)
+                let elements: Elements = try document.select("tbody > tr") // 게시글 노드 배열
+                
+                _ = try elements.get(0).select(".subject > a") // 게시판 내용 가져오기
+                
+                completion(true, "") // 올바른 게시판
+            } catch {
+                completion(false, error.localizedDescription) // 올바르지 않은 게시판
+            }
+        }
+    }
 }

@@ -26,6 +26,9 @@ class MainController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 게시판 리스트 데이터가 변경된 경우의 옵저버
+        NotificationCenter.default.addObserver(self, selector: #selector(onCustomBoardDataChanged), name: Notification.Name(rawValue: "customBoardDataChanged"), object: nil)
+        
         // 방문한 게시글 데이터가 변경된 경우의 옵저버
         NotificationCenter.default.addObserver(self, selector: #selector(onVisitedNoticesDataChanged), name: Notification.Name(rawValue: "visitedNoticesDataChanged"), object: nil)
         
@@ -36,15 +39,6 @@ class MainController: NSViewController {
         
         // 게시판 리스트 가져오기
         getBoardList()
-//        if let URL = Bundle.main.url(forResource: "BoardUrl", withExtension: "plist") {  // BoardUrl.plist를 가져옴
-//            if let data = NSArray(contentsOf: URL) as? [NSArray] { // 데이터 추출
-//                for (i, elem) in data.enumerated() {
-//                    boardUrls.append(elem as! Array<String>)
-//                    boardSelectionMenu.addItem(withTitle: boardUrls[i][0], action: nil, keyEquivalent: "")
-//                    visitedNoticeManagers.append(VisitedNoticeManager(boardName: boardUrls[i][0]))
-//                }
-//            }
-//        }
         
         // 테이블뷰 초기화
         initTableView()
@@ -65,6 +59,13 @@ class MainController: NSViewController {
         }
     }
     
+    // 게시판 리스트 데이터가 변경되었을 때 실행
+    @objc func onCustomBoardDataChanged(_ notification: NSNotification) {
+        boardUrls.removeAll()
+        boardSelectionMenu.removeAllItems()
+        visitedNoticeManagers.removeAll()
+        getBoardList()
+    }
     
     // 방문한 게시글 데이터가 변경되었을 때 실행
     @objc func onVisitedNoticesDataChanged(_ notification: NSNotification) {

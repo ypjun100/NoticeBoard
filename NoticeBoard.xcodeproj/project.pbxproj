@@ -30,6 +30,9 @@
 		84DE7D6B2A5BA72800B916AE /* Bookmark+NSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE7D6A2A5BA72800B916AE /* Bookmark+NSMenu.swift */; };
 		84FC3E2C2A305A2D00B4EDA8 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC3E2B2A305A2D00B4EDA8 /* NSColor+Extension.swift */; };
 		84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */; };
+		F62F04342A920A20007B4C4E /* Settings+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F04332A920A20007B4C4E /* Settings+NSTableView.swift */; };
+		F62F04362A920C29007B4C4E /* BoardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F04352A920C29007B4C4E /* BoardTableCell.swift */; };
+		F62F043A2A921843007B4C4E /* SettingsAddCustomBoardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F04392A921843007B4C4E /* SettingsAddCustomBoardController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		84DE7D6A2A5BA72800B916AE /* Bookmark+NSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmark+NSMenu.swift"; sourceTree = "<group>"; };
 		84FC3E2B2A305A2D00B4EDA8 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		84FE22F829FFF54700A0CCEC /* BookmarkedNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedNoticeManager.swift; sourceTree = "<group>"; };
+		F62F04332A920A20007B4C4E /* Settings+NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+NSTableView.swift"; sourceTree = "<group>"; };
+		F62F04352A920C29007B4C4E /* BoardTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableCell.swift; sourceTree = "<group>"; };
+		F62F04392A921843007B4C4E /* SettingsAddCustomBoardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAddCustomBoardController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				8425CC3F2A033D5200F660A7 /* SettingsController.swift */,
+				F62F04332A920A20007B4C4E /* Settings+NSTableView.swift */,
+				F62F04392A921843007B4C4E /* SettingsAddCustomBoardController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			children = (
 				84C17D4229F40676009CFF4F /* NoticeTableCell.swift */,
 				842FD0042A0B428300C7F35D /* NSAlert+Extension.swift */,
+				F62F04352A920C29007B4C4E /* BoardTableCell.swift */,
 			);
 			path = "Custom Controls";
 			sourceTree = "<group>";
@@ -284,9 +293,12 @@
 				84D4927C2A08A3F4005BFFE5 /* Main+NSMenu.swift in Sources */,
 				84DE7D6B2A5BA72800B916AE /* Bookmark+NSMenu.swift in Sources */,
 				84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */,
+				F62F04362A920C29007B4C4E /* BoardTableCell.swift in Sources */,
 				842FD0052A0B428300C7F35D /* NSAlert+Extension.swift in Sources */,
 				840B1B0C29FFEC42006643BF /* BookmarkController.swift in Sources */,
 				84D4927A2A08A3DD005BFFE5 /* Main+NSTextField.swift in Sources */,
+				F62F043A2A921843007B4C4E /* SettingsAddCustomBoardController.swift in Sources */,
+				F62F04342A920A20007B4C4E /* Settings+NSTableView.swift in Sources */,
 				84C17D3E29F3D52F009CFF4F /* Notice.swift in Sources */,
 				84FE22F929FFF54800A0CCEC /* BookmarkedNoticeManager.swift in Sources */,
 				8429F11629F7C9DB00872089 /* VisitedNoticeManager.swift in Sources */,
