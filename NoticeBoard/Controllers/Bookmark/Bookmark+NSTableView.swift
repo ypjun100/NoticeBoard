@@ -29,6 +29,9 @@ extension BookmarkViewController: NSTableViewDataSource, NSTableViewDelegate {
         cell.noticeTitle.stringValue = notice.title
         cell.noticeTitle.textColor = .textColor
         
+        // tooltip
+        cell.noticeTitle.toolTip = "작성날짜 : " + notice.date
+        
         return cell
     }
     
