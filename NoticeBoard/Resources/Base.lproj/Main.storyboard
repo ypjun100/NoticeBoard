@@ -133,19 +133,19 @@
             <objects>
                 <viewController title="설정" id="bTR-jP-WwO" customClass="SettingsController" customModule="NoticeBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wPO-d0-o1A">
-                        <rect key="frame" x="0.0" y="0.0" width="349" height="307"/>
+                        <rect key="frame" x="0.0" y="0.0" width="349" height="286"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P5K-DS-k5z">
-                                <rect key="frame" x="18" y="276" width="313" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="추가된 게시판" id="lHY-lQ-4Do">
+                                <rect key="frame" x="18" y="255" width="313" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="게시판 목록" id="lHY-lQ-4Do">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Rah-ZN-1X5" userLabel="게시판">
-                                <rect key="frame" x="17" y="130" width="315" height="143"/>
+                                <rect key="frame" x="17" y="109" width="315" height="143"/>
                                 <view key="contentView" id="9G4-LU-dD2">
                                     <rect key="frame" x="4" y="5" width="307" height="135"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,7 +256,7 @@
                                 </view>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yWU-Eo-vN7">
-                                <rect key="frame" x="18" y="98" width="313" height="16"/>
+                                <rect key="frame" x="18" y="77" width="313" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="초기화" id="ZbI-C6-2zZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -264,10 +264,41 @@
                                 </textFieldCell>
                             </textField>
                             <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-Nf-vX7">
-                                <rect key="frame" x="17" y="11" width="315" height="84"/>
+                                <rect key="frame" x="17" y="11" width="315" height="63"/>
                                 <view key="contentView" id="KsT-5M-Kbn">
-                                    <rect key="frame" x="4" y="5" width="307" height="76"/>
+                                    <rect key="frame" x="4" y="5" width="307" height="55"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="79s-6o-eCl">
+                                            <rect key="frame" x="-2" y="23" width="311" height="32"/>
+                                            <buttonCell key="cell" type="push" title="방문 게시글 초기화" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gE5-28-pA3">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onDeleteVisitedNoticesClicked:" target="bTR-jP-WwO" id="vi8-sH-bjY"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-14-wgG">
+                                            <rect key="frame" x="-2" y="-2" width="311" height="32"/>
+                                            <buttonCell key="cell" type="push" title="북마크 게시글 초기화" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8gQ-NZ-tw4">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onDeleteBookmarkedNoticesClicked:" target="bTR-jP-WwO" id="hyA-wE-mMp"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aMC-14-wgG" firstAttribute="leading" secondItem="KsT-5M-Kbn" secondAttribute="leading" constant="5" id="5Mw-Mf-Tsp"/>
+                                        <constraint firstItem="79s-6o-eCl" firstAttribute="top" secondItem="KsT-5M-Kbn" secondAttribute="top" constant="5" id="QEq-cY-SYH"/>
+                                        <constraint firstItem="79s-6o-eCl" firstAttribute="leading" secondItem="KsT-5M-Kbn" secondAttribute="leading" constant="5" id="QoU-Pf-kH6"/>
+                                        <constraint firstItem="aMC-14-wgG" firstAttribute="top" secondItem="79s-6o-eCl" secondAttribute="bottom" constant="5" id="U2t-ZJ-HBV"/>
+                                        <constraint firstAttribute="bottom" secondItem="aMC-14-wgG" secondAttribute="bottom" constant="5" id="aTv-oA-ltL"/>
+                                        <constraint firstAttribute="trailing" secondItem="79s-6o-eCl" secondAttribute="trailing" constant="5" id="gQu-f9-6NH"/>
+                                        <constraint firstAttribute="trailing" secondItem="aMC-14-wgG" secondAttribute="trailing" constant="5" id="xxM-l1-fW4"/>
+                                    </constraints>
                                 </view>
                             </box>
                         </subviews>

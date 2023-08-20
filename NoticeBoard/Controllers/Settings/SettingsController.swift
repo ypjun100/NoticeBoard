@@ -26,12 +26,16 @@ class SettingsController: NSViewController {
     
     // 게시판 삭제
     @IBAction func onRemoveCustomBoard(_ sender: Any) {
+        if selectedTableRow == -1 { return }
+        
         guard let cell = tableView.view(atColumn: 0, row: selectedTableRow, makeIfNecessary: true) as? BoardTableCell else { return }
         
         if let boardId = cell.boardId {
-            Board.removeCustomBoard(boardId: boardId)
-            NotificationCenter.default.post(name: Notification.Name("customBoardDataChanged"), object: nil)
-            NSAlert.showAlert(window: self.view.window!, message: cell.boardName.stringValue + " 게시판을 삭제하였습니다.")
+            NSAlert.showQuestionAlert(window: self.view.window!, message: "게시판 삭제", text: cell.boardName.stringValue + " 게시판을 삭제하시겠습니까?") {
+                Board.removeCustomBoard(boardId: boardId)
+                NotificationCenter.default.post(name: Notification.Name("customBoardDataChanged"), object: nil)
+                NSAlert.showAlert(window: self.view.window!, message: cell.boardName.stringValue + " 게시판을 삭제하였습니다.")
+            }
         }
     }
     

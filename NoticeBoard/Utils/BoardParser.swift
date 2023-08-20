@@ -66,12 +66,15 @@ class BoardParser {
             do {
                 let document: Document = try SwiftSoup.parse(html)
                 let elements: Elements = try document.select("tbody > tr") // 게시글 노드 배열
-                
-                _ = try elements.get(0).select(".subject > a") // 게시판 내용 가져오기
+                guard let element = elements.first() else {
+                    completion(false, "올바르지 않은 게시판입니다.")
+                    return
+                }
+                _ = try element.select(".subject > a") // 게시판 내용 가져오기
                 
                 completion(true, "") // 올바른 게시판
             } catch {
-                completion(false, error.localizedDescription) // 올바르지 않은 게시판
+                completion(false, "올바르지 않은 게시판입니다.") // 올바르지 않은 게시판
             }
         }
     }
