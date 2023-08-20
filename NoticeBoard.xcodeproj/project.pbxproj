@@ -15,7 +15,6 @@
 		845E8F8129F37CA9007A4B80 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E8F8029F37CA9007A4B80 /* MainController.swift */; };
 		845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8229F37CAB007A4B80 /* Assets.xcassets */; };
 		845E8F8629F37CAB007A4B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845E8F8429F37CAB007A4B80 /* Main.storyboard */; };
-		84A12B3E29F9185500180223 /* BoardUrl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A12B3D29F9185500180223 /* BoardUrl.plist */; };
 		84C17D3129F385E0009CFF4F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 84C17D3029F385E0009CFF4F /* SwiftSoup */; };
 		84C17D3429F386BA009CFF4F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84C17D3329F386BA009CFF4F /* Alamofire */; };
 		84C17D3B29F3D451009CFF4F /* BoardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C17D3A29F3D451009CFF4F /* BoardParser.swift */; };
@@ -46,7 +45,6 @@
 		845E8F8229F37CAB007A4B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		845E8F8529F37CAB007A4B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		845E8F8729F37CAB007A4B80 /* NoticeBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoticeBoard.entitlements; sourceTree = "<group>"; };
-		84A12B3D29F9185500180223 /* BoardUrl.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BoardUrl.plist; sourceTree = "<group>"; };
 		84C17D3A29F3D451009CFF4F /* BoardParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardParser.swift; sourceTree = "<group>"; };
 		84C17D3D29F3D52F009CFF4F /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		84C17D4229F40676009CFF4F /* NoticeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 		84C17D3829F3D3D1009CFF4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				84A12B3D29F9185500180223 /* BoardUrl.plist */,
 				845E8F8229F37CAB007A4B80 /* Assets.xcassets */,
 				845E8F8429F37CAB007A4B80 /* Main.storyboard */,
 			);
@@ -273,7 +270,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A12B3E29F9185500180223 /* BoardUrl.plist in Resources */,
 				84C1B9D12A00D31C00D8A529 /* InfoPlist.strings in Resources */,
 				845E8F8329F37CAB007A4B80 /* Assets.xcassets in Resources */,
 				845E8F8629F37CAB007A4B80 /* Main.storyboard in Resources */,
@@ -460,7 +456,7 @@
 				CODE_SIGN_ENTITLEMENTS = "NoticeBoard/Supporting Files/NoticeBoard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -474,7 +470,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junyoung.NoticeBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -490,7 +486,7 @@
 				CODE_SIGN_ENTITLEMENTS = "NoticeBoard/Supporting Files/NoticeBoard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = J2V5PFX4TX;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -504,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.junyoung.NoticeBoard;
 				PRODUCT_NAME = NoticeBoard;
 				SWIFT_EMIT_LOC_STRINGS = YES;

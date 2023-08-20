@@ -16,6 +16,12 @@ class SettingsController: NSViewController {
         
         // 게시판 리스트 데이터가 변경된 경우의 옵저버
         NotificationCenter.default.addObserver(self, selector: #selector(onCustomBoardDataChanged), name: Notification.Name(rawValue: "customBoardDataChanged"), object: nil)
+        
+        // 게시판 리스트 가져오기
+        let entireBoards = Board.getBoards()
+        for board in entireBoards {
+            visitedNoticeManagers.append(VisitedNoticeManager(boardName: board.name))
+        }
     }
     
     // 게시판 리스트 데이터가 변경되었을 때 실행
