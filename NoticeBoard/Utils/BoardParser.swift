@@ -36,7 +36,6 @@ class BoardParser {
                     if(pageIndex != 0 && noticeId == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
                     let title = try element.select(".subject > a")
-                    try title.select("span").remove() // a 태그 내의 span 태그 삭제
                     
                     let date = try element.select(".date").text().components(separatedBy: " ")[1]
                     
@@ -49,6 +48,33 @@ class BoardParser {
                 completion(notices)
             } catch {
                 NSAlert.showAlert(window: window, message: "공지사항 글을 가져올 수 없습니다.")
+            }
+        }
+    }
+    
+    /**
+     올바른 게시판인지 확인하여 불린형으로 반환합니다.
+     - Parameter url: 게시판 URL
+     */
+    static func checkBoardAvailablity(url: String, completion: @escaping(_ availablity: Bool, _ errorMessage: String) -> Void) {
+        AF.request(url).responseString { (response) in
+            guard let html = response.value else {
+                completion(false, "잘못된 URL 주소입니다.")
+                return
+            }
+            
+            do {
+                let document: Document = try SwiftSoup.parse(html)
+                let elements: Elements = try document.select("tbody > tr") // 게시글 노드 배열
+                guard let element = elements.first() else {
+                    completion(false, "올바르지 않은 게시판입니다.")
+                    return
+                }
+                _ = try element.select(".subject > a") // 게시판 내용 가져오기
+                
+                completion(true, "") // 올바른 게시판
+            } catch {
+                completion(false, "올바르지 않은 게시판입니다.") // 올바르지 않은 게시판
             }
         }
     }
