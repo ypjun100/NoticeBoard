@@ -64,7 +64,10 @@ class MainController: NSViewController {
         boardUrls.removeAll()
         boardSelectionMenu.removeAllItems()
         visitedNoticeManagers.removeAll()
+        currentBoardSelectionIndex = 0
+        clearBoardData()
         getBoardList()
+        updateBoardData()
     }
     
     // 방문한 게시글 데이터가 변경되었을 때 실행
