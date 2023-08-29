@@ -30,15 +30,13 @@ class Board: Codable {
         let decoder = JSONDecoder() // json 객체를 변환하기 위한 디코더
         
         // Board 데이터가 있는 경우
-        var index = 1
+        var index = 0
         if let encodedBoards = UserDefaults.standard.object(forKey: "custom_boards") as? [Data] {
             for encodedBoard in encodedBoards {
+                index += 1
                 if let board = try? decoder.decode(Board.self, from: encodedBoard) {
-                    if excludeIndex != 0 && index == excludeIndex {
-                        continue
-                    }
+                    if excludeIndex != 0 && board.id == excludeIndex { continue }
                     userBoards.append(board)
-                    index += 1
                 }
             }
         }
@@ -63,7 +61,7 @@ class Board: Codable {
     
     // 사용자 게시판 삭제
     static func removeCustomBoard(boardId: Int) {
-        var customBoards: [Board] = getCustomBoards(excludeIndex: boardId) // 사용자 추가 게시판
+        let customBoards: [Board] = getCustomBoards(excludeIndex: boardId) // 사용자 추가 게시판
         let encoder = JSONEncoder() // json 형식으로 변환하기 위한 인코더
         var encodedBoards: [Data] = []
         
