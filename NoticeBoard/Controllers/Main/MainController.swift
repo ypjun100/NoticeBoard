@@ -83,8 +83,19 @@ class MainController: NSViewController {
         progressIndicator.startAnimation(self)
         BoardParser.parseBoardNotices(url: boardUrls[currentBoardSelectionIndex], searchKeyword: currentSearchKeyword, pageIndex: boardPageIndex, window: self.view.window!) { notices in
             self.notices.append(contentsOf: notices)
-            self.tableView.reloadData()
-            self.progressIndicator.stopAnimation(self)
+            
+            // 게시판 전체를 채울 수 없는 게시글 수라면 두 번째 페이지도 같이 불러옴
+            if (self.notices.count < 15) {
+                self.boardPageIndex += 1
+                BoardParser.parseBoardNotices(url: self.boardUrls[self.currentBoardSelectionIndex], searchKeyword: self.currentSearchKeyword, pageIndex: self.boardPageIndex, window: self.view.window!) { notices in
+                    self.notices.append(contentsOf: notices)
+                    self.tableView.reloadData()
+                    self.progressIndicator.stopAnimation(self)
+                }
+            } else {
+                self.tableView.reloadData()
+                self.progressIndicator.stopAnimation(self)
+            }
         }
     }
     
