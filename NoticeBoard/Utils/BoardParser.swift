@@ -36,6 +36,7 @@ class BoardParser {
                     if(pageIndex != 0 && noticeId == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
                     let title = try element.select(".subject > a")
+                    try title.select(".new").remove() // a 태그 내의 new 텍스트 삭제
                     
                     let date = try element.select(".date").text().components(separatedBy: " ")[1]
                     
