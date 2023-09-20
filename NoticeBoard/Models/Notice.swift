@@ -9,6 +9,15 @@ import Foundation
     - url : 게시글 URL
  */
 struct Notice: Codable {
+    var id: String
+    var type: Int
+    var title: String
+    var date: String
+    var url: String
+}
+
+// v1.1.1 이하에서 사용되었던 Notice 모델
+struct NoticeV111: Codable {
     var id: Int
     var type: Int
     var title: String

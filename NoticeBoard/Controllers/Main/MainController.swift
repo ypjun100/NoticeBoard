@@ -143,7 +143,7 @@ class MainController: NSViewController {
     
     // 특정 게시글 북마킹
     @IBAction func onNoticeBookmarked(_ sender: NSMenuItem) {
-        if (notices[tableView.clickedRow].id == -1) {
+        if (notices[tableView.clickedRow].id == "-1") {
             NSAlert.showAlert(window: self.view.window!, message: "공지사항은 북마크할 수 없습니다.")
             return
         }

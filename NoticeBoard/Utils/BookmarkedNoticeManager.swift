@@ -45,7 +45,7 @@ class BookmarkedNoticeManager {
     }
     
     // noticeId로 해당 게시글이 북마크되었는지 확인
-    func contains(noticeId: Int) -> Bool {
+    func contains(noticeId: String) -> Bool {
         for notice in bookmarkedNotices {
             if (notice.id == noticeId) {
                 return true
@@ -67,7 +67,7 @@ class BookmarkedNoticeManager {
     }
     
     // 특정 게시글 데이터 삭제
-    func remove(noticeId: Int) {
+    func remove(noticeId: String) {
         for (i, notice) in bookmarkedNotices.enumerated() {
             if (notice.id == noticeId) {
                 bookmarkedNotices.remove(at: i)
