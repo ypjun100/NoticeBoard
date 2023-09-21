@@ -82,4 +82,31 @@ class BookmarkedNoticeManager {
         bookmarkedNotices.removeAll()
         saveData()
     }
+    
+    // 이전버전의 데이터를 현재 버전에 맞춰주는 컨버터
+    // !해당 메서드는 MainController 내에서만 사용해 런타임에 한 번만 실행되도록 해야함
+    func convertPreviousData() {
+        var newBookmarkedNotices: [Notice] = []
+        
+        // 이전버전에 저장된 북마크 게시글을 불러와 새 모델에 맞게끔 변환
+        if let encodedBookmarkedNotices = UserDefaults.standard.object(forKey: "bookmarked_notices") as? [Data] {
+            for encodedBookmarkedNotice in encodedBookmarkedNotices {
+                if let bookmarkedNotice = try? decoder.decode(NoticeV111.self, from: encodedBookmarkedNotice) {
+                    if let noticeId = BoardParser.extractParamFromUrl(url: bookmarkedNotice.url, key: "article_no") {
+                        newBookmarkedNotices.append(Notice(id: noticeId,
+                                                    type: bookmarkedNotice.type,
+                                                    title: bookmarkedNotice.title,
+                                                    date: bookmarkedNotice.date,
+                                                    url: bookmarkedNotice.url))
+                    }
+                }
+            }
+        }
+        
+        // 변환된 데이터가 있는 경우에만 데이터 저장
+        if (newBookmarkedNotices.count > 0) {
+            bookmarkedNotices = newBookmarkedNotices
+            saveData()
+        }
+    }
 }
