@@ -37,18 +37,22 @@ class MainController: NSViewController {
         boardSelectionView.layer?.cornerRadius = 5.0
         boardSelectionView.layer?.backgroundColor = NSColor.boardSelectBackground?.cgColor
         
+        // 게시판 리스트 가져오기
+        getBoardList()
+        
         // 데이터 모델 업데이트로 인한 이전 버전의 데이터가 변환이 필요한지 확인한 뒤 필요하다면 데이터 변환 실행
         if let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
             let lastBuildVersion = UserDefaults.standard.integer(forKey: "last_build_version")
-            if (lastBuildVersion < Int(buildVersion)! || lastBuildVersion == 0) {
+            if (lastBuildVersion == 0) {
+                // 방문 데이터 초기화 진행 (이전 방문 데이터는 더이상 표시되지 않으므로)
+                for visitedNoticeManager in visitedNoticeManagers {
+                    visitedNoticeManager.removeAll()
+                }
                 bookmarkedNoticeManager.convertPreviousData()
                 bookmarkedNoticeManager.updateData()
                 UserDefaults.standard.set(Int(buildVersion)!, forKey: "last_build_version")
             }
         }
-        
-        // 게시판 리스트 가져오기
-        getBoardList()
         
         // 테이블뷰 초기화
         initTableView()
