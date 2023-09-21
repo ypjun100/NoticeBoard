@@ -40,6 +40,20 @@ class MainController: NSViewController {
         // 게시판 리스트 가져오기
         getBoardList()
         
+        // 데이터 모델 업데이트로 인한 이전 버전의 데이터가 변환이 필요한지 확인한 뒤 필요하다면 데이터 변환 실행
+        if let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            let lastBuildVersion = UserDefaults.standard.integer(forKey: "last_build_version")
+            if (lastBuildVersion == 0) {
+                // 방문 데이터 초기화 진행 (이전 방문 데이터는 더이상 표시되지 않으므로)
+                for visitedNoticeManager in visitedNoticeManagers {
+                    visitedNoticeManager.removeAll()
+                }
+                bookmarkedNoticeManager.convertPreviousData()
+                bookmarkedNoticeManager.updateData()
+                UserDefaults.standard.set(Int(buildVersion)!, forKey: "last_build_version")
+            }
+        }
+        
         // 테이블뷰 초기화
         initTableView()
     }
@@ -143,7 +157,7 @@ class MainController: NSViewController {
     
     // 특정 게시글 북마킹
     @IBAction func onNoticeBookmarked(_ sender: NSMenuItem) {
-        if (notices[tableView.clickedRow].id == -1) {
+        if (notices[tableView.clickedRow].id == "-1") {
             NSAlert.showAlert(window: self.view.window!, message: "공지사항은 북마크할 수 없습니다.")
             return
         }

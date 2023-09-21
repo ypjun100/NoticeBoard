@@ -29,21 +29,25 @@ class BoardParser {
                 var notices: [Notice] = [] // 게시글 배열
                 
                 for element in elements {
-                    let noticeId = try element.select(".seq").text()
+                    let noticeType = try element.select(".seq").text() // 게시글 종류 (공지 or 게시글 번호)
+                    if (noticeType == "") { continue } // 게시글 종류 파악이 안될 경우 건너뜀
                     
-                    if (noticeId == "") { continue } // noticeId가 존재하지 않으면 건너뜀 (더 이상 게시글이 없는 경우도 해당)
-                    if(searchKeyword != "" && noticeId == "공지") { continue } // 검색하고 있을 때는 공지글을 제외
-                    if(pageIndex != 0 && noticeId == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
+                    let noticeTitle = try element.select(".subject > a")
                     
-                    let title = try element.select(".subject > a")
+                    guard let noticeId = extractParamFromUrl(url: try noticeTitle.attr("href"), key: "article_no") else { continue }
                     
-                    let date = try element.select(".date").text().components(separatedBy: " ")[1]
+                    if(searchKeyword != "" && noticeType == "공지") { continue } // 검색하고 있을 때는 공지글을 제외
+                    if(pageIndex != 0 && noticeType == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
-                    notices.append(Notice(id: noticeId == "공지" ? -1 : Int(noticeId)!,
-                                          type: noticeId == "공지" ? 0 : 1,
-                                          title: try title.text(),
-                                          date: date,
-                                          url: url + String(try element.select(".subject > a").attr("href"))))
+                    try noticeTitle.select(".new").remove() // a 태그 내의 new 텍스트 삭제
+                    
+                    let noticeDate = try element.select(".date").text().components(separatedBy: " ")[1]
+                    
+                    notices.append(Notice(id: noticeType == "공지" ? "-1" : noticeId,
+                                          type: noticeType == "공지" ? 0 : 1,
+                                          title: try noticeTitle.text(),
+                                          date: noticeDate,
+                                          url: url + String(try noticeTitle.attr("href"))))
                 }
                 completion(notices)
             } catch {
@@ -77,5 +81,19 @@ class BoardParser {
                 completion(false, "올바르지 않은 게시판입니다.") // 올바르지 않은 게시판
             }
         }
+    }
+    
+    /**
+     URL 내에서 파라미터 값을 추출합니다.
+     - Parameter url: URL 주소
+     - Parameter key: 값을 추출할 파라미터 이름
+     */
+    static func extractParamFromUrl(url: String, key: String) -> String? {
+        for param in url.split(separator: "&") {
+            if (param.starts(with: key)) {
+                return String(param.split(separator: "=").last!)
+            }
+        }
+        return nil
     }
 }
