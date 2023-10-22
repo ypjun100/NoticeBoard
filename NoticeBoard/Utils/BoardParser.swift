@@ -33,19 +33,25 @@ class BoardParser {
                     if (noticeType == "") { continue } // 게시글 종류 파악이 안될 경우 건너뜀
                     
                     let noticeTitle = try element.select(".subject > a")
+                    var noticeTitleText = try noticeTitle.text() // 게시글 텍스트 저장
                     
                     guard let noticeId = extractParamFromUrl(url: try noticeTitle.attr("href"), key: "article_no") else { continue }
                     
                     if(searchKeyword != "" && noticeType == "공지") { continue } // 검색하고 있을 때는 공지글을 제외
                     if(pageIndex != 0 && noticeType == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
-                    try noticeTitle.select(".new").remove() // a 태그 내의 new 텍스트 삭제
+                    // 신규 글인지 확인
+                    let newTag = try noticeTitle.select(".new")
+                    if (!newTag.isEmpty()) {
+                        try newTag.remove() // a 태그 내의 new 텍스트 삭제
+                        noticeTitleText = "Ⓝ " + noticeTitleText // 제목 앞에 이모티콘 삽입
+                    }
                     
                     let noticeDate = try element.select(".date").text().components(separatedBy: " ")[1]
                     
                     notices.append(Notice(id: noticeType == "공지" ? "-1" : noticeId,
                                           type: noticeType == "공지" ? 0 : 1,
-                                          title: try noticeTitle.text(),
+                                          title: noticeTitleText,
                                           date: noticeDate,
                                           url: url + String(try noticeTitle.attr("href"))))
                 }
