@@ -39,13 +39,18 @@ class BoardParser {
                     if(searchKeyword != "" && noticeType == "공지") { continue } // 검색하고 있을 때는 공지글을 제외
                     if(pageIndex != 0 && noticeType == "공지") { continue } // 게시판의 첫 페이지에서만 공지글을 가져옴
                     
-                    try noticeTitle.select(".new").remove() // a 태그 내의 new 텍스트 삭제
+                    // 신규 글인지 확인
+                    var noticeTitleText = try noticeTitle.text() // 게시글 제목 텍스트가 저장될 변수
+                    if (!(try noticeTitle.select(".new").isEmpty())) {
+                        try noticeTitle.select(".new").remove()
+                        noticeTitleText = "Ⓝ " + (try! noticeTitle.text()) // 제목 앞에 이모티콘 삽입
+                    }
                     
                     let noticeDate = try element.select(".date").text().components(separatedBy: " ")[1]
                     
                     notices.append(Notice(id: noticeType == "공지" ? "-1" : noticeId,
                                           type: noticeType == "공지" ? 0 : 1,
-                                          title: try noticeTitle.text(),
+                                          title: noticeTitleText,
                                           date: noticeDate,
                                           url: url + String(try noticeTitle.attr("href"))))
                 }
