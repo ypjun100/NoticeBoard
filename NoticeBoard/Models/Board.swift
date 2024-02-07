@@ -6,8 +6,7 @@ class Board: Codable {
     var url: String
     
     // 초기 게시판 데이터
-    private static let initialBoards: [Board] = [Board(name: "대학공지", url: "https://home.sch.ac.kr/sch/06/010100.jsp"),
-                                                 Board(name: "SW중심대학공지", url: "https://home.sch.ac.kr/sw/07/010000.jsp")]
+    private static let initialBoards: [Board] = [Board(name: "대학공지", url: "https://home.sch.ac.kr/sch/06/010100.jsp")]
     
     
     init(id: Int = 0, name: String, url: String) {
