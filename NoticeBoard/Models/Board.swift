@@ -82,7 +82,7 @@ class Board: Codable {
         
         // 배열 순서 변경 (순서 변경을 위한 삭제 & 삽입)
         let board = customBoards.remove(at: from)
-        customBoards.insert(board, at: min(to, customBoards.count)) // 배열의 크기 초과의 수가 at에 들어오지 못하도록 함
+        customBoards.insert(board, at: from < to ? to - 1 : to) // from이 to보다 작은경우 from 요소가 삭제되어 그 뒤의 인덱스가 한칸씩 앞으로 이동하므로 인덱스에 1을 빼줌
         
         let encoder = JSONEncoder() // json 형식으로 변환하기 위한 인코더
         var encodedBoards: [Data] = []
