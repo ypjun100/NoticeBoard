@@ -6,8 +6,7 @@ class Board: Codable {
     var url: String
     
     // 초기 게시판 데이터
-    private static let initialBoards: [Board] = [Board(name: "대학공지", url: "https://home.sch.ac.kr/sch/06/010100.jsp"),
-                                                 Board(name: "SW중심대학공지", url: "https://home.sch.ac.kr/sw/07/010000.jsp")]
+    private static let initialBoards: [Board] = [Board(name: "대학공지", url: "https://home.sch.ac.kr/sch/06/010100.jsp")]
     
     
     init(id: Int = 0, name: String, url: String) {
@@ -75,5 +74,24 @@ class Board: Codable {
     
     static func clearBoardData() {
         UserDefaults.standard.set("", forKey: "custom_boards")
+    }
+    
+    // 사용자 게시판 순서 변경
+    static func reorderCustomBoard(from: Int, to: Int) {
+        var customBoards: [Board] = getCustomBoards() // 사용자 추가 게시판
+        
+        // 배열 순서 변경 (순서 변경을 위한 삭제 & 삽입)
+        let board = customBoards.remove(at: from)
+        customBoards.insert(board, at: from < to ? to - 1 : to) // from이 to보다 작은경우 from 요소가 삭제되어 그 뒤의 인덱스가 한칸씩 앞으로 이동하므로 인덱스에 1을 빼줌
+        
+        let encoder = JSONEncoder() // json 형식으로 변환하기 위한 인코더
+        var encodedBoards: [Data] = []
+        
+        for board in customBoards {
+            if let encodedBoard = try? encoder.encode(board) {
+                encodedBoards.append(encodedBoard)
+            }
+        }
+        UserDefaults.standard.set(encodedBoards, forKey: "custom_boards")
     }
 }
