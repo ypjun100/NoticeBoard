@@ -22,6 +22,9 @@ class SettingsController: NSViewController {
         for board in entireBoards {
             visitedNoticeManagers.append(VisitedNoticeManager(boardName: board.name))
         }
+        
+        // 테이블뷰에 Pasteboard 등록
+        tableView.registerForDraggedTypes([.string])
     }
     
     // 게시판 리스트 데이터가 변경되었을 때 실행

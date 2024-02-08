@@ -75,4 +75,23 @@ class Board: Codable {
     static func clearBoardData() {
         UserDefaults.standard.set("", forKey: "custom_boards")
     }
+    
+    // 사용자 게시판 순서 변경
+    static func reorderCustomBoard(from: Int, to: Int) {
+        var customBoards: [Board] = getCustomBoards() // 사용자 추가 게시판
+        
+        // 배열 순서 변경 (순서 변경을 위한 삭제 & 삽입)
+        let board = customBoards.remove(at: from)
+        customBoards.insert(board, at: min(to, customBoards.count)) // 배열의 크기 초과의 수가 at에 들어오지 못하도록 함
+        
+        let encoder = JSONEncoder() // json 형식으로 변환하기 위한 인코더
+        var encodedBoards: [Data] = []
+        
+        for board in customBoards {
+            if let encodedBoard = try? encoder.encode(board) {
+                encodedBoards.append(encodedBoard)
+            }
+        }
+        UserDefaults.standard.set(encodedBoards, forKey: "custom_boards")
+    }
 }
